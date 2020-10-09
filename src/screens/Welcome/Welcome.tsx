@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import styles from './Welcome.style';
-import { checkPermission } from '../../utils/location';
+import { checkPermission, getCurrentLocation } from '../../utils/location';
 
 interface Props {}
 
@@ -10,7 +10,13 @@ const Welcome: React.FC<Props> = ({}) => {
 
   useEffect(() => {
     (async () => {
-      checkPermission();
+      const hasPermission = await checkPermission();
+
+      if (hasPermission) {
+        const location = await getCurrentLocation();
+
+        if (location) setAddress(location);
+      }
     })();
   }, []);
 

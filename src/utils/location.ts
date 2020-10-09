@@ -20,3 +20,26 @@ export const checkPermission = async () => {
     console.log(err);
   }
 };
+
+export const getCurrentLocation = async () => {
+  try {
+    let currentAddress: string = '';
+    const { coords }: Location.LocationObject = await Location.getCurrentPositionAsync({
+      accuracy: Location.Accuracy.Highest
+    });
+
+    if (coords) {
+      const { latitude, longitude } = coords;
+      let response = await Location.reverseGeocodeAsync({ latitude, longitude });
+
+      for (let item of response) {
+        let address = `${item.name}, ${item.postalCode}, ${item.city}, ${item.country}`
+        currentAddress = address;
+      }
+    }
+
+    return currentAddress;
+  } catch (err) {
+    console.log(err);
+  }
+};
