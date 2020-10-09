@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
+import { checkPermission } from '../utils/location';
 
 const screenWidth = Dimensions.get('screen').width;
 
 interface Props {}
 
 const LandingScreen: React.FC<Props> = ({}) => {
+  const [address, setAddress] = useState<string>('Waiting for Current Location');
+
+  useEffect(() => {
+    (async () => {
+      checkPermission();
+    })();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
@@ -13,7 +22,7 @@ const LandingScreen: React.FC<Props> = ({}) => {
         <View style={styles.addressContainer}>
           <Text style={styles.addressTitle}>Your Delivery Address</Text>
         </View>
-        <Text style={styles.addressText}>User Address</Text>
+        <Text style={styles.addressText}>{address}</Text>
       </View>
     </View>
   );
@@ -49,7 +58,7 @@ const styles = StyleSheet.create({
     color: 'rgb(41, 143, 163)',
   },
   addressText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: '200',
     color: 'rgb(79, 79, 79)',
   },
