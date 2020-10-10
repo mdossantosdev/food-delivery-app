@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './Welcome.style';
 import { checkPermission, getCurrentLocation } from '../../utils/location';
 
@@ -7,6 +8,7 @@ interface Props {}
 
 const Welcome: React.FC<Props> = ({}) => {
   const [address, setAddress] = useState<string>('Waiting for Current Location');
+  const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
@@ -15,7 +17,12 @@ const Welcome: React.FC<Props> = ({}) => {
       if (hasPermission) {
         const location = await getCurrentLocation();
 
-        if (location) setAddress(location);
+        if (location && location.length > 0) {
+          setAddress(location)
+          setTimeout(() => {
+            navigation.navigate('Home');
+          }, 2000)
+        }
       }
     })();
   }, []);
