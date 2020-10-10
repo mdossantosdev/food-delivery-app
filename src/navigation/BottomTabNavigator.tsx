@@ -1,12 +1,16 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import Home from '../screens/Home';
 
 const BottomTab = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+const TabBarIcon = (props: any) => {
+  return <Icon {...props} size={28} />
+};
+
+const BottomTabNavigator: React.FC = () => {
   return (
     <BottomTab.Navigator
       initialRouteName='Home'
@@ -20,8 +24,8 @@ const BottomTabNavigator = () => {
         component={Home}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name='store' size={26} color={color} />
+          tabBarIcon: ({ focused, color }) => (
+            <TabBarIcon focused={focused} name='home' color={color} />
           )
         }}
       />
