@@ -39,6 +39,16 @@ const BottomTabNavigator: React.FC = () => {
           )
         }}
       />
+      <BottomTab.Screen
+        name='Cart'
+        component={Home}
+        options={{
+          tabBarLabel: 'Cart',
+          tabBarIcon: ({ focused, color }) => (
+            <TabBarIcon focused={focused} name='cart' color={color} />
+          )
+        }}
+      />
     </BottomTab.Navigator>
   );
 }
