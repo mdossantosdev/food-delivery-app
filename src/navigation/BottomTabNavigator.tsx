@@ -7,7 +7,7 @@ import Home from '../screens/Home';
 const BottomTab = createBottomTabNavigator();
 
 const TabBarIcon = (props: any) => {
-  return <Icon {...props} size={28} />
+  return <Icon {...props} size={26} />
 };
 
 const BottomTabNavigator: React.FC = () => {
@@ -26,6 +26,16 @@ const BottomTabNavigator: React.FC = () => {
           tabBarLabel: 'Home',
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused} name='home' color={color} />
+          )
+        }}
+      />
+      <BottomTab.Screen
+        name='Offer'
+        component={Home}
+        options={{
+          tabBarLabel: 'Offer',
+          tabBarIcon: ({ focused, color }) => (
+            <TabBarIcon focused={focused} name='tag' color={color} />
           )
         }}
       />
