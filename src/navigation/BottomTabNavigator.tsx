@@ -49,6 +49,16 @@ const BottomTabNavigator: React.FC = () => {
           )
         }}
       />
+      <BottomTab.Screen
+        name='Account'
+        component={Home}
+        options={{
+          tabBarLabel: 'Account',
+          tabBarIcon: ({ focused, color }) => (
+            <TabBarIcon focused={focused} name='account' color={color} />
+          )
+        }}
+      />
     </BottomTab.Navigator>
   );
 }
