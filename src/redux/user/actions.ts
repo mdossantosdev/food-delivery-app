@@ -1,6 +1,7 @@
 import { ActionType } from './actionTypes';
+import { AppThunkAction } from '../store';
 
-export const updateLocation = () => async (dispatch) => {
+export const updateLocation = (): AppThunkAction => async (dispatch) => {
   try {
     dispatch({
       type: ActionType.UPDATE_LOCATION
