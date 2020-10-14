@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
+import { Routes } from './routes';
 import { Home } from '../screens/Home';
 
 const BottomTab = createBottomTabNavigator();
@@ -10,17 +11,17 @@ const TabBarIcon = (props: any) => {
   return <Icon {...props} size={26} />
 };
 
-const BottomTabNavigator: FC = () => {
+export const BottomTabNavigator: FC = () => {
   return (
     <BottomTab.Navigator
-      initialRouteName='Home'
+      initialRouteName={Routes.Home}
       tabBarOptions={{
         activeTintColor: 'rgb(41, 143, 163)',
         inactiveTintColor: 'rgb(143, 143, 143)',
       }}
     >
       <BottomTab.Screen
-        name='Home'
+        name={Routes.Home}
         component={Home}
         options={{
           tabBarLabel: 'Home',
@@ -30,7 +31,7 @@ const BottomTabNavigator: FC = () => {
         }}
       />
       <BottomTab.Screen
-        name='Offer'
+        name={Routes.Offer}
         component={Home}
         options={{
           tabBarLabel: 'Offer',
@@ -40,7 +41,7 @@ const BottomTabNavigator: FC = () => {
         }}
       />
       <BottomTab.Screen
-        name='Cart'
+        name={Routes.Cart}
         component={Home}
         options={{
           tabBarLabel: 'Cart',
@@ -50,7 +51,7 @@ const BottomTabNavigator: FC = () => {
         }}
       />
       <BottomTab.Screen
-        name='Account'
+        name={Routes.Account}
         component={Home}
         options={{
           tabBarLabel: 'Account',
@@ -61,6 +62,4 @@ const BottomTabNavigator: FC = () => {
       />
     </BottomTab.Navigator>
   );
-}
-
-export default BottomTabNavigator;
+};

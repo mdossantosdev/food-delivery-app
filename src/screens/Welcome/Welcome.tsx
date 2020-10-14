@@ -18,7 +18,7 @@ export const Welcome: FC = () => {
         if (location && location.length > 0) {
           setAddress(location)
           setTimeout(() => {
-            navigation.navigate('Home');
+            navigation.navigate('BottomTab');
           }, 2000)
         }
       }
