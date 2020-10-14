@@ -1,12 +1,14 @@
+import { LocationObject } from 'expo-location';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
 
-export const updateLocation = (): AppThunkAction => async (dispatch) => {
+export const updateLocation = (location: LocationObject): AppThunkAction => async (dispatch) => {
   try {
     dispatch({
-      type: ActionType.UPDATE_LOCATION
+      type: ActionType.UPDATE_LOCATION,
+      payload: location
     });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
   }
 };
