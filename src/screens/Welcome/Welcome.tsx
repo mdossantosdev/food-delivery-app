@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './Welcome.style';
 import { checkPermission, getCurrentLocation } from '../../utils/location';
 
-interface Props {}
-
-const Welcome: React.FC<Props> = ({}) => {
+export const Welcome: FC = () => {
   const [address, setAddress] = useState<string>('Waiting for Current Location');
   const navigation = useNavigation();
 
@@ -39,5 +37,3 @@ const Welcome: React.FC<Props> = ({}) => {
     </View>
   );
 }
-
-export default Welcome;
