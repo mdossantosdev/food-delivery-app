@@ -20,7 +20,7 @@ export const userReducer = (state = initialState, action: UserAction) => {
       return {
         ...state,
         error: action.payload,
-      }
+      };
     default:
       return state;
   }
