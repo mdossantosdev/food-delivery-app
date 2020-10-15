@@ -1,3 +1,4 @@
 export enum ActionType {
   UPDATE_LOCATION = 'UPDATE_LOCATION',
+  USER_ERROR = 'USER_ERROR',
 }

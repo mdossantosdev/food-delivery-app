@@ -8,7 +8,10 @@ export const updateLocation = (location: LocationObject): AppThunkAction => asyn
       type: ActionType.UPDATE_LOCATION,
       payload: location
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    })
   }
 };

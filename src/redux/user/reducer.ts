@@ -14,8 +14,13 @@ export const userReducer = (state = initialState, action: UserAction) => {
     case ActionType.UPDATE_LOCATION:
       return {
         ...state,
-        location: action.payload
+        location: action.payload,
       };
+    case ActionType.USER_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      }
     default:
       return state;
   }

@@ -6,4 +6,9 @@ interface UpdateLocationAction {
   payload: LocationObject;
 }
 
-export type UserAction = UpdateLocationAction;
+interface UserErrorAction {
+  type: typeof ActionType.USER_ERROR;
+  payload: unknown;
+}
+
+export type UserAction = UpdateLocationAction | UserErrorAction;
