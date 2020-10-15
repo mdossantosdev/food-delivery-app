@@ -1,13 +1,10 @@
 import { LocationObject } from 'expo-location';
 import { ActionType } from './actionTypes';
-import { UserState, UserAction } from './types';
+import { UserAction } from './types';
+import { User, UserState } from '../../shared/interfaces';
 
 const initialState: UserState = {
-  user: {
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-  },
+  user: {} as User,
   location: {} as LocationObject,
   error: undefined,
 }
