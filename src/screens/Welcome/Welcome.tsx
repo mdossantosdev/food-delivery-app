@@ -1,7 +1,9 @@
 import React, { FC, useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from './Welcome.style';
+
+import { styles } from './styles';
+import { Routes } from '../../navigation/routes';
 import { checkPermission, getCurrentLocation } from '../../utils/location';
 
 export const Welcome: FC = () => {
@@ -18,7 +20,7 @@ export const Welcome: FC = () => {
         if (location && location.length > 0) {
           setAddress(location)
           setTimeout(() => {
-            navigation.navigate('BottomTab');
+            navigation.navigate(Routes.BottomTab);
           }, 2000)
         }
       }
@@ -36,4 +38,4 @@ export const Welcome: FC = () => {
       </View>
     </View>
   );
-}
+};

@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const screenWidth = Dimensions.get('screen').width;
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -37,5 +37,3 @@ const styles = StyleSheet.create({
     color: 'rgb(79, 79, 79)',
   },
 });
-
-export default styles;

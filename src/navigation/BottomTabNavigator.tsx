@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
+import { BottomTabStackParamList } from './types';
 import { Routes } from './routes';
 import { Home } from '../screens/Home';
 
-const BottomTab = createBottomTabNavigator();
+const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
 
 const TabBarIcon = (props: any) => {
   return <Icon {...props} size={26} />
