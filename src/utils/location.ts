@@ -1,5 +1,6 @@
 import * as Location from 'expo-location';
 import { Alert } from 'react-native';
+import { LocationGeocode } from '../shared/interfaces';
 
 export const checkPermission = async () => {
   try {
@@ -23,23 +24,37 @@ export const checkPermission = async () => {
 
 export const getCurrentLocation = async () => {
   try {
-    let currentAddress: string = '';
+    let currentLocation;
+
     const { coords }: Location.LocationObject = await Location.getCurrentPositionAsync({
       accuracy: Location.Accuracy.Highest
     });
 
     if (coords) {
       const { latitude, longitude } = coords;
-      let response = await Location.reverseGeocodeAsync({ latitude, longitude });
 
-      for (let item of response) {
-        let address = `${item.name}, ${item.postalCode}, ${item.city}, ${item.country}`
-        currentAddress = address;
-      }
+      const response: LocationGeocode[] = await Location.reverseGeocodeAsync({ latitude, longitude });
+
+      currentLocation = response;
+    }
+
+    return currentLocation;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const formatCurrentLocation = (location: LocationGeocode[]) => {
+  try {
+    let currentAddress: string = '';
+
+    for (let item of location) {
+      const address = `${item.name}, ${item.postalCode}, ${item.city}, ${item.country}`;
+      currentAddress = address;
     }
 
     return currentAddress;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };

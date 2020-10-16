@@ -4,12 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import { styles } from './styles';
 import { Routes } from '../../navigation/routes';
-import { checkPermission, getCurrentLocation } from '../../utils/location';
+import { checkPermission, getCurrentLocation, formatCurrentLocation } from '../../utils/location';
 
 export const Welcome: FC = () => {
   const navigation = useNavigation();
 
-  const [address, setAddress] = useState<string>('Waiting for Current Location');
+  const [address, setAddress] = useState<string | undefined>('Waiting for Current Location');
 
   useEffect(() => {
     (async () => {
@@ -19,7 +19,10 @@ export const Welcome: FC = () => {
         const location = await getCurrentLocation();
 
         if (location && location.length > 0) {
-          setAddress(location)
+          const currentAddress = formatCurrentLocation(location);
+
+          setAddress(currentAddress);
+
           setTimeout(() => {
             navigation.navigate(Routes.BottomTab);
           }, 2000)
