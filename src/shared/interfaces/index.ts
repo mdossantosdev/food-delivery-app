@@ -43,3 +43,7 @@ export interface FoodAvailability {
   restaurants: [Restaurant];
   foods: [FoodItem];
 }
+
+export interface OrderState {
+  availability: FoodAvailability;
+}
