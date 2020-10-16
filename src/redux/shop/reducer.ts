@@ -6,14 +6,14 @@ const initialState = {
   error: undefined,
 }
 
-export const orderReducer = (state = initialState, action) => {
+export const shopReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.AVAILABILITY:
       return {
         ...state,
         availability: action.payload,
       };
-    case ActionType.ORDER_ERROR:
+    case ActionType.SHOP_ERROR:
       return {
         ...state,
         error: action.payload,

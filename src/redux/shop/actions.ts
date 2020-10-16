@@ -8,7 +8,7 @@ export const availability = (postCode: string): AppThunkAction => async (dispatc
 
     if (!response) {
       dispatch({
-        type: ActionType.ORDER_ERROR,
+        type: ActionType.SHOP_ERROR,
         payload: 'Availability error'
       })
     }
@@ -19,7 +19,7 @@ export const availability = (postCode: string): AppThunkAction => async (dispatc
     })
   } catch (error) {
     dispatch({
-      type: ActionType.ORDER_ERROR,
+      type: ActionType.SHOP_ERROR,
       payload: error
     })
   }

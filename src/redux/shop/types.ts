@@ -6,9 +6,9 @@ interface AvailabilityAction {
   payload: FoodAvailability;
 }
 
-interface OrderErrorAction {
-  type: typeof ActionType.ORDER_ERROR;
+interface ShopErrorAction {
+  type: typeof ActionType.SHOP_ERROR;
   payload: unknown;
 }
 
-export type OrderAction = AvailabilityAction | OrderErrorAction;
+export type OrderAction = AvailabilityAction | ShopErrorAction;

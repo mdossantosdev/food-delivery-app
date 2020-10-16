@@ -44,6 +44,6 @@ export interface FoodAvailability {
   foods: [FoodItem];
 }
 
-export interface OrderState {
+export interface ShopState {
   availability: FoodAvailability;
 }

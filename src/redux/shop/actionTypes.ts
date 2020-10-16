@@ -1,4 +1,4 @@
 export enum ActionType {
   AVAILABILITY = 'AVAILABILITY',
-  ORDER_ERROR = 'ORDER_ERROR',
+  SHOP_ERROR = 'SHOP_ERROR',
 }
