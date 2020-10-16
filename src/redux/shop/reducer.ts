@@ -1,12 +1,13 @@
 import { ActionType } from './actionTypes';
-import { FoodAvailability } from '../../shared/interfaces';
+import { ShopAction } from './types';
+import { FoodAvailability, ShopState } from '../../shared/interfaces';
 
-const initialState = {
+const initialState: ShopState = {
   availability: {} as FoodAvailability,
   error: undefined,
 }
 
-export const shopReducer = (state = initialState, action) => {
+export const shopReducer = (state = initialState, action: ShopAction) => {
   switch (action.type) {
     case ActionType.AVAILABILITY:
       return {

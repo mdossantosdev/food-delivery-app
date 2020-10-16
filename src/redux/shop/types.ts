@@ -11,4 +11,4 @@ interface ShopErrorAction {
   payload: unknown;
 }
 
-export type OrderAction = AvailabilityAction | ShopErrorAction;
+export type ShopAction = AvailabilityAction | ShopErrorAction;

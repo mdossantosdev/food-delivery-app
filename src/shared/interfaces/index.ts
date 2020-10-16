@@ -46,4 +46,5 @@ export interface FoodAvailability {
 
 export interface ShopState {
   availability: FoodAvailability;
+  error: string | undefined;
 }
