@@ -7,8 +7,9 @@ import { Routes } from '../../navigation/routes';
 import { checkPermission, getCurrentLocation } from '../../utils/location';
 
 export const Welcome: FC = () => {
-  const [address, setAddress] = useState<string>('Waiting for Current Location');
   const navigation = useNavigation();
+
+  const [address, setAddress] = useState<string>('Waiting for Current Location');
 
   useEffect(() => {
     (async () => {
