@@ -1,10 +1,25 @@
 import React, { FC } from 'react';
-import { View, Text } from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+import { styles } from './styles';
+import { useAppSelector } from '../../hooks/reduxHooks';
 
 export const Home: FC = () => {
+  const { location } = useAppSelector(state => state.user);
+
   return (
-    <View style={{ flex:1, alignItems:'center', justifyContent:'center' }}>
-      <Text>Home Screen</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.addressContainer}>
+          <Image style={styles.deliveryIcon} source={require('../../images/food_delivery_icon.png')} />
+          <Text style={styles.addressText}>{`${location['name']}, ${location['postalCode']}, ${location['city']}`}</Text>
+          <TouchableOpacity onPress={() => {}}>
+            <Icon name='square-edit-outline' style={styles.editIcon} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.searchBarContainer}></View>
+      </View>
+      <View style={styles.contentContainer}></View>
     </View>
   );
 };
