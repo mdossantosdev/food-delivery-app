@@ -44,14 +44,9 @@ export const getCurrentLocation = async () => {
   }
 };
 
-export const formatCurrentLocation = (location: LocationGeocode[]) => {
+export const formatCurrentLocation = (location: LocationGeocode) => {
   try {
-    let currentAddress: string = '';
-
-    for (let item of location) {
-      const address = `${item.name}, ${item.postalCode}, ${item.city}, ${item.country}`;
-      currentAddress = address;
-    }
+    const currentAddress: string = `${location.name}, ${location.postalCode}, ${location.city}, ${location.country}`;
 
     return currentAddress;
   } catch (error) {

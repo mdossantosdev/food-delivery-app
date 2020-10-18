@@ -22,10 +22,10 @@ export const Welcome: FC = () => {
         const location = await getCurrentLocation();
 
         if (location && location.length > 0) {
-          const currentAddress = formatCurrentLocation(location);
+          const currentAddress = formatCurrentLocation(location[0]);
 
           setAddress(currentAddress);
-          dispatch(updateLocation(location));
+          dispatch(updateLocation(location[0]));
 
           setTimeout(() => {
             navigation.navigate(Routes.BottomTab);
