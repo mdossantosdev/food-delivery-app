@@ -4,10 +4,13 @@ import { useNavigation } from '@react-navigation/native';
 
 import { styles } from './styles';
 import { Routes } from '../../navigation/routes';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { updateLocation } from '../../redux/user/actions';
 import { checkPermission, getCurrentLocation, formatCurrentLocation } from '../../utils/location';
 
 export const Welcome: FC = () => {
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
 
   const [address, setAddress] = useState<string | undefined>('Waiting for Current Location');
 
@@ -22,6 +25,7 @@ export const Welcome: FC = () => {
           const currentAddress = formatCurrentLocation(location);
 
           setAddress(currentAddress);
+          dispatch(updateLocation(location));
 
           setTimeout(() => {
             navigation.navigate(Routes.BottomTab);

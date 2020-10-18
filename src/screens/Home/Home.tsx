@@ -7,4 +7,4 @@ export const Home: FC = () => {
       <Text>Home Screen</Text>
     </View>
   );
-}
+};

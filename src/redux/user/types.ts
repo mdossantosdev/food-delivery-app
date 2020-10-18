@@ -1,9 +1,9 @@
 import { ActionType } from './actionTypes';
-import { LocationObject } from 'expo-location';
+import { LocationGeocode } from '../../shared/interfaces';
 
 interface UpdateLocationAction {
   type: typeof ActionType.UPDATE_LOCATION;
-  payload: LocationObject;
+  payload: LocationGeocode;
 }
 
 interface UserErrorAction {

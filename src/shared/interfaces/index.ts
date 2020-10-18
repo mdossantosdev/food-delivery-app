@@ -1,5 +1,3 @@
-import { LocationObject } from 'expo-location';
-
 export interface User {
   firstName: string;
   lastName: string;
@@ -8,7 +6,7 @@ export interface User {
 
 export interface UserState {
   user: User;
-  location: LocationObject;
+  location: LocationGeocode;
   error: string | undefined;
 }
 

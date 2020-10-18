@@ -17,8 +17,8 @@ export const checkPermission = async () => {
     }
 
     return true;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -39,8 +39,8 @@ export const getCurrentLocation = async () => {
     }
 
     return currentLocation;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };
 
