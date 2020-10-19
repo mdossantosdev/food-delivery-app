@@ -3,12 +3,13 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'rgb(255, 255, 255)'
   },
   header: {
-    flex: 1,
+    flex: 1.5,
   },
   addressContainer: {
-    flex: 2,
+    flex: 5,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -28,9 +29,11 @@ export const styles = StyleSheet.create({
     fontSize: 20,
   },
   searchBarContainer: {
-    flex: 4,
+    flex: 7,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   contentContainer: {
-    flex: 5,
+    flex: 10.5,
   },
 });
