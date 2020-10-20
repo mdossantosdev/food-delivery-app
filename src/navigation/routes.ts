@@ -1,8 +1,10 @@
 export enum Routes {
-  Welcome = 'Welcome',
-  BottomTab = 'BottomTab',
-  Home = 'Home',
-  Offer = 'Offer',
-  Cart = 'Cart',
   Account = 'Account',
+  BottomTab = 'BottomTab',
+  Cart = 'Cart',
+  Home = 'Home',
+  HomeNavigator = 'HomeNavigator',
+  Offer = 'Offer',
+  Search = 'Search',
+  Welcome = 'Welcome',
 }

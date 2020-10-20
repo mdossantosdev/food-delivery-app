@@ -4,7 +4,7 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { BottomTabStackParamList } from './types';
 import { Routes } from './routes';
-import { Home } from '../screens/Home';
+import { HomeNavigator } from './HomeNavigator';
 
 const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
 
@@ -15,15 +15,15 @@ const TabBarIcon = (props: any) => {
 export const BottomTabNavigator: FC = () => {
   return (
     <BottomTab.Navigator
-      initialRouteName={Routes.Home}
+      initialRouteName={Routes.HomeNavigator}
       tabBarOptions={{
         activeTintColor: 'rgb(41, 143, 163)',
         inactiveTintColor: 'rgb(143, 143, 143)',
       }}
     >
       <BottomTab.Screen
-        name={Routes.Home}
-        component={Home}
+        name={Routes.HomeNavigator}
+        component={HomeNavigator}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ focused, color }) => (
@@ -33,7 +33,7 @@ export const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name={Routes.Offer}
-        component={Home}
+        component={HomeNavigator}
         options={{
           tabBarLabel: 'Offer',
           tabBarIcon: ({ focused, color }) => (
@@ -43,7 +43,7 @@ export const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name={Routes.Cart}
-        component={Home}
+        component={HomeNavigator}
         options={{
           tabBarLabel: 'Cart',
           tabBarIcon: ({ focused, color }) => (
@@ -53,7 +53,7 @@ export const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name={Routes.Account}
-        component={Home}
+        component={HomeNavigator}
         options={{
           tabBarLabel: 'Account',
           tabBarIcon: ({ focused, color }) => (

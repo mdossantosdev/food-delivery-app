@@ -1,12 +1,15 @@
 import React, { FC } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { SearchBar } from '../../components/SearchBar';
 import { useAppSelector } from '../../hooks/reduxHooks';
+import { Routes } from '../../navigation/routes';
 
 export const Home: FC = () => {
+  const navigation = useNavigation();
   const { location } = useAppSelector(state => state.user);
 
   return (
@@ -26,7 +29,7 @@ export const Home: FC = () => {
         </View>
         <View style={styles.searchBarContainer}>
           <SearchBar
-            onTouchStart={() => {}}
+            onTouchStart={() => navigation.navigate(Routes.Search)}
             onChangeText={() => {}}
           />
         </View>
