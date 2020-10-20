@@ -18,13 +18,13 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderColor: 'rgb(229, 229, 229)',
     borderWidth: 1,
-    shadowColor: 'rgba(0, 0, 0, 0.25)',
+    shadowColor: 'rgb(23, 23, 23)',
     shadowOffset: {
-      width: 0,
-      height: 4,
+      width: 1,
+      height: 3,
     },
     shadowOpacity: 0.3,
-    shadowRadius: 3,
+    shadowRadius: 2,
   },
   searchIcon: {
     fontSize: 28,

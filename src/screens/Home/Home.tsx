@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { SearchBar } from '../../components/SearchBar';
+import { CategoryCard } from '../../components/CategoryCard';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { Routes } from '../../navigation/routes';
 
@@ -34,7 +36,19 @@ export const Home: FC = () => {
           />
         </View>
       </View>
-      <View style={styles.contentContainer}></View>
+      <View style={styles.contentContainer}>
+        <ScrollView>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={[{id: 1, title: '', icon: ''}]}
+            renderItem={({ item }) =>
+              <CategoryCard item={item} onPress={() => alert(`${item.title}`)} />
+            }
+            keyExtractor={(item) => `${item.id}`}
+          />
+        </ScrollView>
+      </View>
     </View>
   );
 };

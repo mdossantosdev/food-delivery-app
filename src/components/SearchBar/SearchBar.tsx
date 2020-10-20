@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { View, TextInput } from 'react-native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+
 import { styles } from './styles';
 import { Props } from './types';
 
