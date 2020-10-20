@@ -25,7 +25,10 @@ export const Home: FC = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.searchBarContainer}>
-          <SearchBar onTouchStart={() => {}} onChangeText={() => {}} />
+          <SearchBar
+            onTouchStart={() => {}}
+            onChangeText={() => {}}
+          />
         </View>
       </View>
       <View style={styles.contentContainer}></View>
