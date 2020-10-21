@@ -7,6 +7,7 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 import { styles } from './styles';
 import { SearchBar } from '../../components/SearchBar';
 import { CategoryCard } from '../../components/CategoryCard';
+import { RestaurantCard } from '../../components/RestaurantCard';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { Routes } from '../../navigation/routes';
 
@@ -46,6 +47,15 @@ export const Home: FC = () => {
               <CategoryCard item={item} onPress={() => alert(`${item.title}`)} />
             }
             keyExtractor={(item) => `${item.id}`}
+          />
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={[{_id: '369', images: []}]}
+            renderItem={({ item }) =>
+              <RestaurantCard item={item} onPress={() => {}} />
+            }
+            keyExtractor={(item) => `${item._id}`}
           />
         </ScrollView>
       </View>

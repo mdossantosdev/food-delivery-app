@@ -23,7 +23,7 @@ export interface FoodItem {
   category: string;
   price: number;
   readyTime: number;
-  images: [string];
+  images: string[];
 }
 
 export interface Restaurant {
@@ -32,8 +32,8 @@ export interface Restaurant {
   foodType: string;
   address: string;
   phone: string;
-  images: string;
-  foods: [FoodItem];
+  images: string[];
+  foods: FoodItem[];
 }
 
 export interface FoodAvailability {
