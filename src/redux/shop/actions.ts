@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
 
-export const availability = (postCode: string): AppThunkAction => async (dispatch) => {
+export const availabilityByPostCode = (postCode: string): AppThunkAction => async (dispatch) => {
   try {
     const response = await axios.get(`URL${postCode}`);
 

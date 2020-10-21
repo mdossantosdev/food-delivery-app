@@ -8,7 +8,7 @@ interface AvailabilityAction {
 
 interface ShopErrorAction {
   type: typeof ActionType.SHOP_ERROR;
-  payload: unknown;
+  payload: any;
 }
 
 export type ShopAction = AvailabilityAction | ShopErrorAction;

@@ -8,7 +8,7 @@ interface UpdateLocationAction {
 
 interface UserErrorAction {
   type: typeof ActionType.USER_ERROR;
-  payload: unknown;
+  payload: any;
 }
 
 export type UserAction = UpdateLocationAction | UserErrorAction;

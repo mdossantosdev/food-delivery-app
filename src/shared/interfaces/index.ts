@@ -48,14 +48,14 @@ export interface ShopState {
 }
 
 export interface LocationGeocode {
-  city: string | null;
-  country: string | null;
-  district: string | null;
-  isoCountryCode: string | null;
-  name: string | null;
-  postalCode: string | null;
-  region: string | null;
-  street: string | null;
-  subregion: string | null;
-  timezone: string | null;
+  city: string;
+  country: string;
+  district: string;
+  isoCountryCode: string;
+  name: string;
+  postalCode: string;
+  region: string;
+  street: string;
+  subregion: string;
+  timezone: string;
 }
