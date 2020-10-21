@@ -69,7 +69,10 @@ export const Home: FC = () => {
             showsHorizontalScrollIndicator={false}
             data={restaurants}
             renderItem={({ item }) =>
-              <RestaurantCard item={item} onPress={() => {}} />
+              <RestaurantCard
+                item={item}
+                onPress={(item) => navigation.navigate(Routes.Restaurant, { restaurant: item })}
+              />
             }
             keyExtractor={(item) => `${item._id}`}
           />
