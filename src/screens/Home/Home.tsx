@@ -38,11 +38,11 @@ export const Home: FC = () => {
         </View>
       </View>
       <View style={styles.contentContainer}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={[{id: 1, title: '', icon: ''}]}
+            data={[]}
             renderItem={({ item }) =>
               <CategoryCard item={item} onPress={() => alert(`${item.title}`)} />
             }
@@ -54,7 +54,7 @@ export const Home: FC = () => {
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={[{_id: '369', images: []}]}
+            data={[]}
             renderItem={({ item }) =>
               <RestaurantCard item={item} onPress={() => {}} />
             }
@@ -63,6 +63,15 @@ export const Home: FC = () => {
           <View>
             <Text style={styles.title}>30 Minutes Foods</Text>
           </View>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={[]}
+            renderItem={({ item }) =>
+              <RestaurantCard item={item} onPress={() => {}} />
+            }
+            keyExtractor={(item) => `${item._id}`}
+          />
         </ScrollView>
       </View>
     </View>

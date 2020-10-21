@@ -1,6 +1,6 @@
-import { Restaurant } from '../../shared/interfaces';
+import { Restaurant, FoodItem } from '../../shared/interfaces';
 
 export interface Props {
-  item: Restaurant;
+  item: Restaurant | FoodItem;
   onPress: Function;
 }
