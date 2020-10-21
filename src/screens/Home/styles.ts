@@ -36,4 +36,10 @@ export const styles = StyleSheet.create({
   contentContainer: {
     flex: 10.5,
   },
+  title: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: 'rgb(41, 143, 163)',
+    marginLeft: 15,
+  },
 });

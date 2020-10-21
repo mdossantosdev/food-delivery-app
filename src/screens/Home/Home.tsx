@@ -48,6 +48,9 @@ export const Home: FC = () => {
             }
             keyExtractor={(item) => `${item.id}`}
           />
+          <View>
+            <Text style={styles.title}>Top Restaurants</Text>
+          </View>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -57,6 +60,9 @@ export const Home: FC = () => {
             }
             keyExtractor={(item) => `${item._id}`}
           />
+          <View>
+            <Text style={styles.title}>30 Minutes Foods</Text>
+          </View>
         </ScrollView>
       </View>
     </View>
