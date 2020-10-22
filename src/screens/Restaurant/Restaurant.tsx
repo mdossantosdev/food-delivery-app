@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import { View, Text, ImageBackground } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { styles } from './styles';
 import { BackButton } from '../../components/BackButton';
+import { FoodCard } from '../../components/FoodCard';
 
 export const Restaurant: FC = () => {
   const navigation = useNavigation();
@@ -29,6 +31,14 @@ export const Restaurant: FC = () => {
             <Text style={styles.address}>{restaurant.address}</Text>
           </View>
         </ImageBackground>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={restaurant.foods}
+          renderItem={({ item }) =>
+            <FoodCard item={item} onPress={() => {}} />
+          }
+          keyExtractor={(item) => `${item._id}`}
+        />
       </View>
     </View>
   );
