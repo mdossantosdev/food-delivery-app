@@ -10,13 +10,13 @@ export const FoodCard: FC<Props> = ({ item, onPress }) => {
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={{ uri: `${item.images[0]}`}} style={styles.image} />
       <View style={styles.contentContainer}>
-          <View style={styles.textContainer}>
-            <Text style={styles.textName}>{item.name}</Text>
-            <Text style={styles.textCategory}>{item.category}</Text>
-          </View>
-          <View style={styles.priceContainer}>
-            <Text style={styles.priceText}>$ {item.price}</Text>
-          </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.textName}>{item.name}</Text>
+          <Text style={styles.textCategory}>{item.category}</Text>
+        </View>
+        <View style={styles.priceContainer}>
+          <Text style={styles.priceText}>$ {item.price}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );

@@ -26,16 +26,19 @@ export const Restaurant: FC = () => {
           source={{ uri: `${restaurant.images[0]}`}}
           style={styles.imageBackground}
         >
-          <View style={styles.textContainer}>
-            <Text style={styles.name}>{restaurant.name}</Text>
-            <Text style={styles.address}>{restaurant.address}</Text>
+          <View style={styles.textImageContainer}>
+            <Text style={styles.nameText}>{restaurant.name}</Text>
+            <Text style={styles.addressText}>{restaurant.address}</Text>
           </View>
         </ImageBackground>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={restaurant.foods}
           renderItem={({ item }) =>
-            <FoodCard item={item} onPress={() => {}} />
+            <FoodCard
+              item={item}
+              onPress={() => {}}
+            />
           }
           keyExtractor={(item) => `${item._id}`}
         />

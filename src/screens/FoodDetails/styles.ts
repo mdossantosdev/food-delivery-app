@@ -23,9 +23,9 @@ export const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 11,
-    backgroundColor: 'rgb(255, 255, 255)',
+    paddingBottom: 10,
   },
-  imageBackground: {
+  image: {
     width: screenWidth,
     height: 260,
     justifyContent: 'flex-end',
@@ -36,16 +36,34 @@ export const styles = StyleSheet.create({
     padding: 15,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
   },
   nameText: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '600',
     color: 'rgb(255, 255, 255)',
   },
-  addressText: {
+  categoryText: {
     fontSize: 22,
     fontWeight: '500',
     color: 'rgb(255, 255, 255)',
   },
+  innerContentContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  textContainer: {
+    padding: 20,
+  },
+  textFood: {
+
+    marginBottom: 10,
+  },
+  textReadyTime: {
+    fontWeight: '700',
+  },
+  foodCardContainer: {
+    height: 122,
+    alignSelf: 'center',
+  }
 });
