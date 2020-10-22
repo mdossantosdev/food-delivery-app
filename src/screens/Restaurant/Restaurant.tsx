@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import { View, Text, ImageBackground } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { styles } from './styles';
+import { BackButton } from '../../components/BackButton';
 
 export const Restaurant: FC = () => {
+  const navigation = useNavigation();
   const route = useRoute();
 
   const { restaurant } = route.params;
@@ -12,6 +14,9 @@ export const Restaurant: FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <View style={styles.iconContainer}>
+          <BackButton onPress={() => navigation.goBack()} />
+        </View>
         <Text style={styles.title}>{restaurant.name}</Text>
       </View>
       <View style={styles.contentContainer}>

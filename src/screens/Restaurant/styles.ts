@@ -9,10 +9,13 @@ export const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    paddingLeft: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  iconContainer: {
+    position: 'absolute',
+    left: 0,
   },
   title: {
     fontSize: 22,
@@ -26,13 +29,14 @@ export const styles = StyleSheet.create({
     width: screenWidth,
     height: 260,
     justifyContent: 'flex-end',
+    backgroundColor: 'rgb(234, 234, 234)',
   },
   textContainer: {
     height: 100,
-    backgroundColor: 'rgba(0,0,0,0.6)',
     padding: 10,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   name: {
     color: 'rgb(255, 255, 255)',
