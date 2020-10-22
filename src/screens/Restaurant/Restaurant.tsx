@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { styles } from './styles';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
+import { Routes } from '../../navigation/routes';
 
 export const Restaurant: FC = () => {
   const navigation = useNavigation();
@@ -37,7 +38,7 @@ export const Restaurant: FC = () => {
           renderItem={({ item }) =>
             <FoodCard
               item={item}
-              onPress={() => {}}
+              onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
             />
           }
           keyExtractor={(item) => `${item._id}`}

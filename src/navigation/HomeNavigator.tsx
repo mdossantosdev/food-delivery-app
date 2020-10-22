@@ -5,6 +5,7 @@ import { Routes } from './routes';
 import { Home } from '../screens/Home';
 import { Search } from '../screens/Search';
 import { Restaurant } from '../screens/Restaurant';
+import { FoodDetails } from '../screens/FoodDetails';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ export const HomeNavigator: FC = () => {
       <Stack.Screen name={Routes.Home} component={Home} />
       <Stack.Screen name={Routes.Search} component={Search} />
       <Stack.Screen name={Routes.Restaurant} component={Restaurant} />
+      <Stack.Screen name={Routes.FoodDetails} component={FoodDetails} />
     </Stack.Navigator>
   );
 };
