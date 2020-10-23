@@ -3,12 +3,13 @@ import { View, Text, ImageBackground } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { styles } from './styles';
+import { FoodDetailsNavigationProp, FoodDetailsRouteProp } from './types';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
 
 export const FoodDetails: FC = () => {
-  const navigation = useNavigation();
-  const route = useRoute();
+  const navigation = useNavigation<FoodDetailsNavigationProp>();
+  const route = useRoute<FoodDetailsRouteProp>();
 
   const { food } = route.params;
 
