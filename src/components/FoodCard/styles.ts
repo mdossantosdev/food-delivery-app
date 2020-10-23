@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   textContainer: {
-    flex: 9,
+    flex: 8,
     padding: 10,
   },
   textName: {
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   priceContainer: {
-    flex: 3,
+    flex: 4,
     padding: 10,
     justifyContent: 'space-around',
     alignItems: 'center',

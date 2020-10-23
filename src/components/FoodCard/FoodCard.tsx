@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { Props } from './types';
+import { QuantityButtons } from '../QuantityButtons';
 
 export const FoodCard: FC<Props> = ({ item, onPress }) => {
   return (
@@ -16,6 +17,11 @@ export const FoodCard: FC<Props> = ({ item, onPress }) => {
         </View>
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>$ {item.price}</Text>
+          <QuantityButtons
+            add={() => {}}
+            remove={() => {}}
+            quantity={1}
+          />
         </View>
       </View>
     </TouchableOpacity>
