@@ -10,17 +10,17 @@ export const availabilityByPostCode = (postCode: string): AppThunkAction => asyn
       dispatch({
         type: ActionType.SHOP_ERROR,
         payload: 'Availability error'
-      })
+      });
     }
 
     dispatch({
       type: ActionType.AVAILABILITY,
       payload: response.data
-    })
+    });
   } catch (error) {
     dispatch({
       type: ActionType.SHOP_ERROR,
       payload: error
-    })
+    });
   }
 };

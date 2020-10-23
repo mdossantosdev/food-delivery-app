@@ -16,6 +16,6 @@ export const updateLocation = (location: ILocationGeocode): AppThunkAction => as
     dispatch({
       type: ActionType.USER_ERROR,
       payload: error
-    })
+    });
   }
 };

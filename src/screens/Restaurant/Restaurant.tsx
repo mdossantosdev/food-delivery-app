@@ -4,13 +4,14 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { styles } from './styles';
+import { RestaurantNavigationProp, RestaurantRouteProp } from './types';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
 import { Routes } from '../../navigation/routes';
 
 export const Restaurant: FC = () => {
-  const navigation = useNavigation();
-  const route = useRoute();
+  const navigation = useNavigation<RestaurantNavigationProp>();
+  const route = useRoute<RestaurantRouteProp>();
 
   const { restaurant } = route.params;
 
