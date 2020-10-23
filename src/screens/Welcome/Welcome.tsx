@@ -3,13 +3,14 @@ import { View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { styles } from './styles';
+import { WelcomeNavigationProp } from './types';
 import { Routes } from '../../navigation/routes';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { updateLocation } from '../../redux/user/actions';
 import { checkPermission, getCurrentLocation, formatCurrentLocation } from '../../utils/location';
 
 export const Welcome: FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<WelcomeNavigationProp>();
   const dispatch = useAppDispatch();
 
   const [address, setAddress] = useState<string | undefined>('Waiting for Current Location');
