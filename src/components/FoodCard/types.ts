@@ -1,6 +1,6 @@
-import { FoodItem } from '../../shared/interfaces';
+import { IFoodItem } from '../../shared/interfaces';
 
 export interface Props {
-  item: FoodItem;
+  item: IFoodItem;
   onPress: () => void;
 }

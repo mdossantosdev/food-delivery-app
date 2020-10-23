@@ -1,10 +1,10 @@
 import { ActionType } from './actionTypes';
 import { UserAction } from './types';
-import { User, UserState, LocationGeocode } from '../../shared/interfaces';
+import { IUser, IUserState, ILocationGeocode } from '../../shared/interfaces';
 
-const initialState: UserState = {
-  user: {} as User,
-  location: {} as LocationGeocode,
+const initialState: IUserState = {
+  user: {} as IUser,
+  location: {} as ILocationGeocode,
   error: undefined,
 }
 

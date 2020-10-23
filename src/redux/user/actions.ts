@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
-import { LocationGeocode } from '../../shared/interfaces';
+import { ILocationGeocode } from '../../shared/interfaces';
 
-export const updateLocation = (location: LocationGeocode): AppThunkAction => async (dispatch) => {
+export const updateLocation = (location: ILocationGeocode): AppThunkAction => async (dispatch) => {
   try {
     const jsonValue = JSON.stringify(location);
     await AsyncStorage.setItem('@user_location', jsonValue);

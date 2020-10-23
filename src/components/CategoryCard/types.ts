@@ -1,6 +1,6 @@
-import { Category } from '../../shared/interfaces';
+import { ICategory } from '../../shared/interfaces';
 
 export interface Props {
-  item: Category;
+  item: ICategory;
   onPress: Function;
 }

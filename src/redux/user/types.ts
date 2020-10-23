@@ -1,9 +1,9 @@
 import { ActionType } from './actionTypes';
-import { LocationGeocode } from '../../shared/interfaces';
+import { ILocationGeocode } from '../../shared/interfaces';
 
 interface UpdateLocationAction {
   type: typeof ActionType.UPDATE_LOCATION;
-  payload: LocationGeocode;
+  payload: ILocationGeocode;
 }
 
 interface UserErrorAction {

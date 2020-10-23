@@ -1,22 +1,22 @@
-export interface User {
+export interface IUser {
   firstName: string;
   lastName: string;
   phone: string;
 }
 
-export interface UserState {
-  user: User;
-  location: LocationGeocode;
+export interface IUserState {
+  user: IUser;
+  location: ILocationGeocode;
   error: string | undefined;
 }
 
-export interface Category {
+export interface ICategory {
   id: number;
   title: string;
   icon: string;
 }
 
-export interface FoodItem {
+export interface IFoodItem {
   _id: string;
   name: string;
   description: string;
@@ -26,36 +26,36 @@ export interface FoodItem {
   images: string[];
 }
 
-export interface Restaurant {
+export interface IRestaurant {
   _id: string;
   name: string;
   foodType: string;
   address: string;
   phone: string;
   images: string[];
-  foods: FoodItem[];
+  foods: IFoodItem[];
 }
 
-export interface FoodAvailability {
-  categories: [Category];
-  restaurants: [Restaurant];
-  foods: [FoodItem];
+export interface IFoodAvailability {
+  categories: [ICategory];
+  restaurants: [IRestaurant];
+  foods: [IFoodItem];
 }
 
-export interface ShopState {
-  availability: FoodAvailability;
+export interface IShopState {
+  availability: IFoodAvailability;
   error: string | undefined;
 }
 
-export interface LocationGeocode {
-  city: string;
-  country: string;
-  district: string;
-  isoCountryCode: string;
-  name: string;
-  postalCode: string;
-  region: string;
-  street: string;
-  subregion: string;
-  timezone: string;
+export interface ILocationGeocode {
+  city: string | null;
+  country: string | null;
+  district: string | null;
+  isoCountryCode: string | null;
+  name: string | null;
+  postalCode: string | null;
+  region: string | null;
+  street: string | null;
+  subregion: string | null;
+  timezone: string | null;
 }

@@ -2,12 +2,13 @@ import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Routes } from './routes';
+import { HomeStackParamList } from './types';
 import { Home } from '../screens/Home';
 import { Search } from '../screens/Search';
 import { Restaurant } from '../screens/Restaurant';
 import { FoodDetails } from '../screens/FoodDetails';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<HomeStackParamList>();
 
 export const HomeNavigator: FC = () => {
   return (

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
+import { HomeScreenProps } from './types';
 import { SearchBar } from '../../components/SearchBar';
 import { CategoryCard } from '../../components/CategoryCard';
 import { RestaurantCard } from '../../components/RestaurantCard';
@@ -13,7 +14,7 @@ import { availabilityByPostCode } from '../../redux/shop/actions';
 import { Routes } from '../../navigation/routes';
 
 export const Home: FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenProps>();
   const dispatch = useAppDispatch();
 
   const {
@@ -25,7 +26,7 @@ export const Home: FC = () => {
   } = useAppSelector((state) => state.shop);
 
   useEffect(() => {
-    dispatch(availabilityByPostCode(postalCode));
+    dispatch(availabilityByPostCode(postalCode || '75001'));
   }, []);
 
   return (
@@ -71,7 +72,7 @@ export const Home: FC = () => {
             renderItem={({ item }) =>
               <RestaurantCard
                 item={item}
-                onPress={(item) => navigation.navigate(Routes.Restaurant, { restaurant: item })}
+                onPress={() => navigation.navigate(Routes.Restaurant, { restaurant: item })}
               />
             }
             keyExtractor={(item) => `${item._id}`}
@@ -84,7 +85,10 @@ export const Home: FC = () => {
             showsHorizontalScrollIndicator={false}
             data={foods}
             renderItem={({ item }) =>
-              <RestaurantCard item={item} onPress={() => {}} />
+              <RestaurantCard
+                item={item}
+                onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
+              />
             }
             keyExtractor={(item) => `${item._id}`}
           />

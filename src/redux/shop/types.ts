@@ -1,9 +1,9 @@
 import { ActionType } from './actionTypes';
-import { FoodAvailability } from '../../shared/interfaces';
+import { IFoodAvailability } from '../../shared/interfaces';
 
 interface AvailabilityAction {
   type: typeof ActionType.AVAILABILITY;
-  payload: FoodAvailability;
+  payload: IFoodAvailability;
 }
 
 interface ShopErrorAction {
