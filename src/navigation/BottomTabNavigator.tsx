@@ -5,6 +5,7 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 import { BottomTabStackParamList } from './types';
 import { Routes } from './routes';
 import { HomeNavigator } from './HomeNavigator';
+import { Account } from '../screens/Account';
 import { Cart } from '../screens/Cart';
 
 const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
@@ -54,7 +55,7 @@ export const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name={Routes.Account}
-        component={HomeNavigator}
+        component={Account}
         options={{
           tabBarLabel: 'Account',
           tabBarIcon: ({ focused, color }) => (
