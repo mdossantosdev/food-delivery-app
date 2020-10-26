@@ -7,7 +7,7 @@ export type AppStackParamList = {
 
 export type BottomTabStackParamList = {
   HomeNavigator: undefined;
-  Offer: undefined;
+  Offers: undefined;
   Cart: undefined;
   Account: undefined;
 };
