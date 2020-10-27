@@ -10,7 +10,7 @@ import { SearchBar } from '../../components/SearchBar';
 import { CategoryCard } from '../../components/CategoryCard';
 import { RestaurantCard } from '../../components/RestaurantCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { availabilityByPostCode } from '../../redux/shop/actions';
+import { availabilityByPostCode, foodSearchByPostCode } from '../../redux/shop/actions';
 import { Routes } from '../../navigation/routes';
 
 export const Home: FC = () => {
@@ -27,6 +27,10 @@ export const Home: FC = () => {
 
   useEffect(() => {
     dispatch(availabilityByPostCode(postalCode || '75001'));
+
+    setTimeout(() => {
+      dispatch(foodSearchByPostCode(postalCode || '75001'));
+    }, 1000)
   }, []);
 
   return (

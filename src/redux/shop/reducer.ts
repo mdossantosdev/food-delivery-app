@@ -1,9 +1,10 @@
 import { ActionType } from './actionTypes';
 import { ShopAction } from './types';
-import { IFoodAvailability, IShopState } from '../../shared/interfaces';
+import { IFoodAvailability, IFoodItem, IShopState } from '../../shared/interfaces';
 
 const initialState: IShopState = {
   availability: {} as IFoodAvailability,
+  availableFoods: {} as [IFoodItem],
   error: undefined,
 }
 
@@ -13,6 +14,11 @@ export const shopReducer = (state = initialState, action: ShopAction) => {
       return {
         ...state,
         availability: action.payload,
+      };
+    case ActionType.FOOD_SEARCH:
+      return {
+        ...state,
+        availableFoods: action.payload,
       };
     case ActionType.SHOP_ERROR:
       return {

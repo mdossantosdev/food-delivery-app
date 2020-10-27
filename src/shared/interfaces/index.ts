@@ -44,6 +44,7 @@ export interface IFoodAvailability {
 
 export interface IShopState {
   availability: IFoodAvailability;
+  availableFoods: [IFoodItem];
   error: string | undefined;
 }
 
