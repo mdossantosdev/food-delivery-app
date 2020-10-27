@@ -24,3 +24,26 @@ export const availabilityByPostCode = (postCode: string): AppThunkAction => asyn
     });
   }
 };
+
+export const foodSearchByPostCode = (postCode: string): AppThunkAction => async (dispatch) => {
+  try {
+    const response = await axios.get(`URL${postCode}`);
+
+    if (!response) {
+      dispatch({
+        type: ActionType.SHOP_ERROR,
+        payload: 'Availability error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.FOOD_SEARCH,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.SHOP_ERROR,
+      payload: error
+    });
+  }
+};
