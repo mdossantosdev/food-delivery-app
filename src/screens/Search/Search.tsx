@@ -4,13 +4,15 @@ import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
+import { SearchScreenProps } from './types';
 import { BackButton } from '../../components/BackButton';
 import { SearchBar } from '../../components/SearchBar';
 import { FoodCard } from '../../components/FoodCard';
 import { useAppSelector } from '../../hooks/reduxHooks';
+import { Routes } from '../../navigation/routes';
 
 export const Search: FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<SearchScreenProps>();
 
   const { availableFoods } = useAppSelector((state) => state.shop);
 
@@ -38,7 +40,7 @@ export const Search: FC = () => {
           renderItem={({item}) =>
             <FoodCard
               item={item}
-              onPress={() => {}}
+              onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
             />
           }
           keyExtractor={(item) => `${item._id}`}
