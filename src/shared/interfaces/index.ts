@@ -25,6 +25,7 @@ export interface IFoodItem {
   price: number;
   readyTime: number;
   images: string[];
+  quantity: number;
 }
 
 export interface IRestaurant {
