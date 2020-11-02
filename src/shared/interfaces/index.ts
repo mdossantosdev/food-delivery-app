@@ -7,6 +7,7 @@ export interface IUser {
 export interface IUserState {
   user: IUser;
   location: ILocationGeocode;
+  cart: [IFoodItem];
   error: string | undefined;
 }
 
