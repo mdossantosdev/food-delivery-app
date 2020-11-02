@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import { Props } from './types';
 
-export const QuantityButtons: FC<Props> = ({ add, remove, quantity }) => {
+export const QuantityButtons: FC<Props> = ({ add, remove, quantity = 0 }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={() => remove()}>

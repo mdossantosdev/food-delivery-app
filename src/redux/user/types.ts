@@ -1,14 +1,9 @@
 import { ActionType } from './actionTypes';
-import { ILocationGeocode, IFoodItem } from '../../shared/interfaces';
+import { ILocationGeocode } from '../../shared/interfaces';
 
 interface UpdateLocationAction {
   type: typeof ActionType.UPDATE_LOCATION;
   payload: ILocationGeocode;
-}
-
-interface UpdateCartAction {
-  type: typeof ActionType.UPDATE_CART;
-  payload: IFoodItem;
 }
 
 interface UserErrorAction {
@@ -16,4 +11,4 @@ interface UserErrorAction {
   payload: any;
 }
 
-export type UserAction = UpdateLocationAction | UpdateCartAction | UserErrorAction;
+export type UserAction = UpdateLocationAction | UserErrorAction;
