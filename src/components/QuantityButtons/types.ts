@@ -1,5 +1,5 @@
 export interface Props {
-  add: Function;
-  remove: Function;
+  addItem: Function;
+  removeItem: Function;
   quantity: number;
 }

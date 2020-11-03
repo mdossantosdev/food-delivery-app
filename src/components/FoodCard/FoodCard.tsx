@@ -5,8 +5,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import { Props } from './types';
 import { QuantityButtons } from '../QuantityButtons';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { addToCart } from '../../redux/user/actions';
 
 export const FoodCard: FC<Props> = ({ item, onPress }) => {
+  const dispatch = useAppDispatch();
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={{ uri: `${item.images[0]}`}} style={styles.image} />
@@ -18,9 +22,9 @@ export const FoodCard: FC<Props> = ({ item, onPress }) => {
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>$ {item.price}</Text>
           <QuantityButtons
-            add={() => {}}
-            remove={() => {}}
-            quantity={1}
+            addItem={() => dispatch(addToCart(item))}
+            removeItem={() => {}}
+            quantity={item.quantity}
           />
         </View>
       </View>
