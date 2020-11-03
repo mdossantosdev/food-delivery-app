@@ -11,6 +11,11 @@ interface AddToCArtAction {
   payload: IFoodItem;
 }
 
+interface RemoveFromCart {
+  type: typeof ActionType.REMOVE_FROM_CART;
+  payload: IFoodItem;
+}
+
 interface UserErrorAction {
   type: typeof ActionType.USER_ERROR;
   payload: any;
@@ -19,4 +24,5 @@ interface UserErrorAction {
 export type UserAction =
   | UpdateLocationAction
   | AddToCArtAction
+  | RemoveFromCart
   | UserErrorAction;

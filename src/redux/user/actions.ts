@@ -33,3 +33,17 @@ export const addToCart = (item: IFoodItem): AppThunkAction => async (dispatch) =
     });
   }
 };
+
+export const removeFromCart = (item: IFoodItem): AppThunkAction => async (dispatch) => {
+  try {
+    dispatch({
+      type: ActionType.REMOVE_FROM_CART,
+      payload: item
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
