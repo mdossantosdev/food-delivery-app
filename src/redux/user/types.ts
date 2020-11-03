@@ -6,7 +6,7 @@ interface UpdateLocationAction {
   payload: ILocationGeocode;
 }
 
-interface AddToCArtAction {
+interface AddToCartAction {
   type: typeof ActionType.ADD_TO_CART;
   payload: IFoodItem;
 }
@@ -23,6 +23,6 @@ interface UserErrorAction {
 
 export type UserAction =
   | UpdateLocationAction
-  | AddToCArtAction
+  | AddToCartAction
   | RemoveFromCart
   | UserErrorAction;
