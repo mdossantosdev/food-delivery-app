@@ -1,4 +1,5 @@
 export enum ActionType {
+  ADD_TO_CART = 'ADD_TO_CART',
   UPDATE_LOCATION = 'UPDATE_LOCATION',
   USER_ERROR = 'USER_ERROR',
 }
