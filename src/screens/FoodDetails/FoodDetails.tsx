@@ -6,12 +6,15 @@ import { styles } from './styles';
 import { FoodDetailsNavigationProp, FoodDetailsRouteProp } from './types';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import { checkExistence } from '../../utils/cart';
 
 export const FoodDetails: FC = () => {
   const navigation = useNavigation<FoodDetailsNavigationProp>();
   const route = useRoute<FoodDetailsRouteProp>();
 
   const { food } = route.params;
+  const { cart } = useAppSelector((state) => state.user);
 
   return (
     <View style={styles.container}>
@@ -39,7 +42,7 @@ export const FoodDetails: FC = () => {
             <Text> • {food.description}</Text>
           </View>
           <View style={styles.foodCardContainer}>
-            <FoodCard  item={food} onPress={() => {}} />
+            <FoodCard  item={checkExistence(food, cart)} onPress={() => {}} />
           </View>
         </View>
       </View>

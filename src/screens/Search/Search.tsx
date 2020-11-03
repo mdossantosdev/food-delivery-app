@@ -8,13 +8,15 @@ import { SearchScreenProps } from './types';
 import { BackButton } from '../../components/BackButton';
 import { SearchBar } from '../../components/SearchBar';
 import { FoodCard } from '../../components/FoodCard';
-import { useAppSelector } from '../../hooks/reduxHooks';
 import { Routes } from '../../navigation/routes';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import { checkExistence } from '../../utils/cart';
 
 export const Search: FC = () => {
   const navigation = useNavigation<SearchScreenProps>();
 
   const { availableFoods } = useAppSelector((state) => state.shop);
+  const { cart } = useAppSelector((state) => state.user);
 
   const [keyword, setKeyword] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -39,7 +41,7 @@ export const Search: FC = () => {
           data={foods}
           renderItem={({item}) =>
             <FoodCard
-              item={item}
+              item={checkExistence(item, cart)}
               onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
             />
           }

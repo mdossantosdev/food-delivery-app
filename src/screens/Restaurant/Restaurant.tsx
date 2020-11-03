@@ -8,12 +8,15 @@ import { RestaurantNavigationProp, RestaurantRouteProp } from './types';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
 import { Routes } from '../../navigation/routes';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import { checkExistence } from '../../utils/cart';
 
 export const Restaurant: FC = () => {
   const navigation = useNavigation<RestaurantNavigationProp>();
   const route = useRoute<RestaurantRouteProp>();
 
   const { restaurant } = route.params;
+  const { cart } = useAppSelector((state) => state.user);
 
   return (
     <View style={styles.container}>
@@ -38,7 +41,7 @@ export const Restaurant: FC = () => {
           data={restaurant.foods}
           renderItem={({ item }) =>
             <FoodCard
-              item={item}
+              item={checkExistence(item, cart)}
               onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
             />
           }
