@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgb(255, 255, 255)',
   },
   header: {
-    flex: 1,
+    flex: 0.5,
     paddingHorizontal: 20,
     paddingVertical: 10,
     flexDirection: 'row',
@@ -24,8 +24,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   amountContainer: {
-    flex: 2,
+    flex: 2.5,
     padding: 10,
+    justifyContent: 'space-around',
   },
   amountInnerContainer: {
     flexDirection: 'row',

@@ -3,14 +3,14 @@ import { StyleSheet, Dimensions } from 'react-native';
 const { width } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
-  container: {
-    width: width - 20,
-    height: 230,
-    justifyContent: 'space-around',
+  buttonContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 10,
-    marginVertical: 5,
-    borderRadius: 20,
+    borderRadius: 25,
+    backgroundColor: 'rgb(41, 143, 163)',
+    alignSelf: 'center',
+    width: width / 1.2,
+    height: 50,
     shadowColor: 'rgb(23, 23, 23)',
     shadowOffset: {
       width: 1,
@@ -19,10 +19,8 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
   },
-  image: {
-    width: width - 20,
-    height: 220,
-    borderRadius: 20,
-    backgroundColor: 'rgb(234, 234, 234)',
+  titleButton: {
+    fontSize: 18,
+    color: 'rgb(255, 255, 255)',
   },
 });

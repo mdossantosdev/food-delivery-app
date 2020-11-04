@@ -5,6 +5,7 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { FoodCard } from '../../components/FoodCard';
+import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { useAppSelector } from '../../hooks/reduxHooks';
 
 export const Cart: FC = () => {
@@ -56,6 +57,10 @@ export const Cart: FC = () => {
           <Text style={styles.totalText}>Total</Text>
           <Text style={styles.totalText}>$ {totalAmount}</Text>
         </View>
+        <ButtonWithTitle
+          title={'Order Now'}
+          onPress={() => {}}
+        />
       </View>
     </View>
   );
