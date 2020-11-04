@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import { Props } from './types';
 import { QuantityButtons } from '../QuantityButtons';
+import { AddButton } from '../AddButton';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { addToCart, removeFromCart } from '../../redux/user/actions';
 
@@ -21,11 +22,18 @@ export const FoodCard: FC<Props> = ({ item, onPress }) => {
         </View>
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>$ {item.price}</Text>
-          <QuantityButtons
-            addItem={() => dispatch(addToCart(item))}
-            removeItem={() => dispatch(removeFromCart(item))}
-            quantity={item.quantity}
-          />
+          {
+            item.quantity > 0
+              ? (
+                  <QuantityButtons
+                    addItem={() => dispatch(addToCart(item))}
+                    removeItem={() => dispatch(removeFromCart(item))}
+                    quantity={item.quantity}
+                  />
+              ) : (
+                <AddButton addItem={() => dispatch(addToCart(item))}/>
+              )
+          }
         </View>
       </View>
     </TouchableOpacity>
