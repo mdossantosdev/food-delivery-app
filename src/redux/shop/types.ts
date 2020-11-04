@@ -8,7 +8,7 @@ interface AvailabilityAction {
 
 interface FoodSearchAction {
   type: typeof ActionType.FOOD_SEARCH;
-  payload: [IFoodItem];
+  payload: IFoodItem[];
 }
 
 interface ShopErrorAction {

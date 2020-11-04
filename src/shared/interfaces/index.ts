@@ -39,14 +39,14 @@ export interface IRestaurant {
 }
 
 export interface IFoodAvailability {
-  categories: [ICategory];
-  restaurants: [IRestaurant];
-  foods: [IFoodItem];
+  categories: ICategory[];
+  restaurants: IRestaurant[];
+  foods: IFoodItem[];
 }
 
 export interface IShopState {
   availability: IFoodAvailability;
-  availableFoods: [IFoodItem];
+  availableFoods: IFoodItem[];
   error: string | undefined;
 }
 

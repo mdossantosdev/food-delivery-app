@@ -1,10 +1,10 @@
 import { ActionType } from './actionTypes';
 import { ShopAction } from './types';
-import { IFoodAvailability, IFoodItem, IShopState } from '../../shared/interfaces';
+import { IFoodAvailability, IShopState } from '../../shared/interfaces';
 
 const initialState: IShopState = {
   availability: {} as IFoodAvailability,
-  availableFoods: {} as [IFoodItem],
+  availableFoods: [],
   error: undefined,
 }
 
