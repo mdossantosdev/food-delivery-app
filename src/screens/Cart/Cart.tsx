@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
@@ -9,6 +9,20 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 
 export const Cart: FC = () => {
   const { cart } = useAppSelector((state) => state.user);
+
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  useEffect(() => {
+    calculateAmount();
+  }, [cart]);
+
+  const calculateAmount = () => {
+    let total = 0;
+    cart.map((item) => {
+      total += item.price * item.quantity;
+    })
+    setTotalAmount(total);
+  }
 
   if (cart.length === 0) {
     return (
@@ -40,7 +54,7 @@ export const Cart: FC = () => {
       <View style={styles.amountContainer}>
         <View style={styles.amountInnerContainer}>
           <Text style={styles.totalText}>Total</Text>
-          <Text style={styles.totalText}>$ {55}</Text>
+          <Text style={styles.totalText}>$ {totalAmount}</Text>
         </View>
       </View>
     </View>
