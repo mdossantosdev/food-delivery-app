@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
     borderColor: 'rgb(41, 143, 163)',
     borderRadius: 10,
     borderWidth: 0.5,
-    height: 50,
-    width: 30,
+    height: 52,
+    width: 32,
   },
   innerButton: {
     fontSize: 20,
@@ -23,10 +23,10 @@ export const styles = StyleSheet.create({
   quantityContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 20,
+    width: 26,
   },
   quantityText: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: '600',
     textAlign: 'center',
   },
