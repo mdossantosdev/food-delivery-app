@@ -16,6 +16,11 @@ export const userReducer = (state = initialState, action: UserAction) => {
         ...state,
         location: action.payload,
       };
+    case ActionType.LOGIN:
+      return {
+        ...state,
+        user: action.payload,
+      };
     case ActionType.ADD_TO_CART:
       const existingItem = state.cart.find((item) => item._id === action.payload._id);
 
