@@ -1,3 +1,4 @@
+import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
@@ -39,6 +40,29 @@ export const removeFromCart = (item: IFoodItem): AppThunkAction => async (dispat
     dispatch({
       type: ActionType.REMOVE_FROM_CART,
       payload: item
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
+
+export const login = (email: string, password: string): AppThunkAction => async (dispatch) => {
+  try {
+    const response = await axios.post(`URL`, { email, password });
+
+    if (!response) {
+      dispatch({
+        type: ActionType.USER_ERROR,
+        payload: 'Login Error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.LOGIN,
+      payload: response.data
     });
   } catch (error) {
     dispatch({
