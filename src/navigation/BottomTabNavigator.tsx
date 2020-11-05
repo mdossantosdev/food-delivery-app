@@ -5,8 +5,8 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 import { BottomTabStackParamList } from './types';
 import { Routes } from './routes';
 import { HomeNavigator } from './HomeNavigator';
+import { CartNavigator } from './CartNavigator';
 import { Account } from '../screens/Account';
-import { Cart } from '../screens/Cart';
 import { Offers } from '../screens/Offers';
 
 const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
@@ -45,8 +45,8 @@ export const BottomTabNavigator: FC = () => {
         }}
       />
       <BottomTab.Screen
-        name={Routes.Cart}
-        component={Cart}
+        name={Routes.CartNavigator}
+        component={CartNavigator}
         options={{
           tabBarLabel: 'Cart',
           tabBarIcon: ({ focused, color }) => (
