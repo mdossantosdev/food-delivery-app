@@ -4,13 +4,14 @@ const { width } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
   buttonContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 25,
-    backgroundColor: 'rgb(41, 143, 163)',
-    alignSelf: 'center',
     width: width / 1.2,
     height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginVertical: 10,
+    borderRadius: 25,
+    backgroundColor: 'rgb(41, 143, 163)',
     shadowColor: 'rgb(23, 23, 23)',
     shadowOffset: {
       width: 1,

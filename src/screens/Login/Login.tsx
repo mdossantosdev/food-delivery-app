@@ -4,6 +4,7 @@ import { View, Text, Image } from 'react-native';
 import { styles } from './styles';
 import { TextInput } from '../../components/TextInput';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
+import { ButtonLink } from '../../components/ButtonLink';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { login } from '../../redux/user/actions';
 
@@ -33,6 +34,10 @@ export const Login: FC = () => {
           <ButtonWithTitle
             title='Login'
             onPress={() => dispatch(login(email, password))}
+          />
+          <ButtonLink
+            title={'No Account? Register Here'}
+            onPress={() => {}}
           />
         </View>
       </View>
