@@ -1,14 +1,17 @@
 import React, { FC, useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { FoodCard } from '../../components/FoodCard';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { useAppSelector } from '../../hooks/reduxHooks';
+import { Routes } from '../../navigation/routes';
 
 export const Cart: FC = () => {
+  const navigation = useNavigation();
   const { cart } = useAppSelector((state) => state.user);
 
   const [totalAmount, setTotalAmount] = useState(0);
@@ -59,7 +62,7 @@ export const Cart: FC = () => {
         </View>
         <ButtonWithTitle
           title={'Order Now'}
-          onPress={() => {}}
+          onPress={() => navigation.navigate(Routes.Login)}
         />
       </View>
     </View>
