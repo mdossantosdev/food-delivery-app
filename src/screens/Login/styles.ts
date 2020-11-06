@@ -21,8 +21,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   deliveryIcon: {
-    width: 120,
-    height: 120,
+    width: 110,
+    height: 110,
     marginVertical: 30,
   },
   buttonContainer: {

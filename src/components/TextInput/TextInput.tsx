@@ -13,7 +13,7 @@ export const TextInput: FC<Props> = ({
     <View style={styles.container}>
       <Input
         placeholder={placeholder}
-        placeholderTextColor={'rgb(90, 89, 89)'}
+        placeholderTextColor={'rgba(90, 89, 89, 0.5)'}
         autoCapitalize='none'
         secureTextEntry={secureText}
         onChangeText={(text) => onChangeText(text)}

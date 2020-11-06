@@ -12,19 +12,42 @@ export const Login: FC = () => {
   const dispatch = useAppDispatch();
 
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [title, setTitle] = useState('Login');
+  const [isRegister, setIsRegister] = useState(false);
+
+  const toggleScreen = () => {
+    setIsRegister(!isRegister);
+    setTitle(!isRegister ? 'Register' : 'Login');
+  }
+
+  const onPressAuthenticate = () => {
+    isRegister
+      ? console.log('Register')
+      : console.log('Login');
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.contentContainer}>
-        <Image style={styles.deliveryIcon} source={require('../../images/food_delivery_icon.png')} />
+        <Image
+          style={styles.deliveryIcon}
+          source={require('../../images/food_delivery_icon.png')}
+        />
         <TextInput
           placeholder={'Email'}
           onChangeText={setEmail}
         />
+        {isRegister &&
+          <TextInput
+            placeholder={'Phone'}
+            onChangeText={setPhone}
+          />
+        }
         <TextInput
           placeholder={'Password'}
           secureText
@@ -32,12 +55,14 @@ export const Login: FC = () => {
         />
         <View style={styles.buttonContainer}>
           <ButtonWithTitle
-            title='Login'
-            onPress={() => dispatch(login(email, password))}
+            title={title}
+            onPress={onPressAuthenticate}
           />
           <ButtonLink
-            title={'No Account? Register Here'}
-            onPress={() => {}}
+            title={
+              !isRegister ? 'No Account? Register Here' : 'Have an Account? Login Here'
+            }
+            onPress={toggleScreen}
           />
         </View>
       </View>
