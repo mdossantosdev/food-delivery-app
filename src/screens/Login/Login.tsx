@@ -6,7 +6,7 @@ import { TextInput } from '../../components/TextInput';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { ButtonLink } from '../../components/ButtonLink';
 import { useAppDispatch } from '../../hooks/reduxHooks';
-import { login } from '../../redux/user/actions';
+import { login, register } from '../../redux/user/actions';
 
 export const Login: FC = () => {
   const dispatch = useAppDispatch();
@@ -24,8 +24,8 @@ export const Login: FC = () => {
 
   const onPressAuthenticate = () => {
     isRegister
-      ? console.log('Register')
-      : console.log('Login');
+      ? dispatch(register(email, phone, password))
+      : dispatch(login(email, password));
   }
 
   return (
