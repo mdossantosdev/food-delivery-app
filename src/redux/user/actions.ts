@@ -71,3 +71,26 @@ export const login = (email: string, password: string): AppThunkAction => async 
     });
   }
 };
+
+export const register = (email: string, phone: string, password: string): AppThunkAction => async (dispatch) => {
+  try {
+    const response = await axios.post(`URL`, { email, phone, password });
+
+    if (!response) {
+      dispatch({
+        type: ActionType.USER_ERROR,
+        payload: 'Register Error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.REGISTER,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
