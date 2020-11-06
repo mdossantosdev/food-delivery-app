@@ -15,14 +15,16 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     color: 'rgb(0, 0, 0)',
   },
-  contentContainer: {
+  keyboardAvoidingView: {
     flex: 11,
-    justifyContent: 'center',
+  },
+  contentContainer: {
+    flex: 1,
     alignItems: 'center',
   },
   deliveryIcon: {
-    width: 110,
-    height: 110,
+    width: 60,
+    height: 60,
     marginVertical: 30,
   },
   buttonContainer: {

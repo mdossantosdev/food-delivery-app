@@ -1,5 +1,13 @@
 import React, { FC, useState } from 'react';
-import { View, Text, Image } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Platform,
+  Keyboard
+} from 'react-native';
 
 import { styles } from './styles';
 import { TextInput } from '../../components/TextInput';
@@ -33,39 +41,46 @@ export const Login: FC = () => {
       <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <View style={styles.contentContainer}>
-        <Image
-          style={styles.deliveryIcon}
-          source={require('../../images/food_delivery_icon.png')}
-        />
-        <TextInput
-          placeholder={'Email'}
-          onChangeText={setEmail}
-        />
-        {isRegister &&
-          <TextInput
-            placeholder={'Phone'}
-            onChangeText={setPhone}
-          />
-        }
-        <TextInput
-          placeholder={'Password'}
-          secureText
-          onChangeText={setPassword}
-        />
-        <View style={styles.buttonContainer}>
-          <ButtonWithTitle
-            title={title}
-            onPress={onPressAuthenticate}
-          />
-          <ButtonLink
-            title={
-              !isRegister ? 'No Account? Register Here' : 'Have an Account? Login Here'
+      <KeyboardAvoidingView
+        style={styles.keyboardAvoidingView}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.contentContainer}>
+            <Image
+              style={styles.deliveryIcon}
+              source={require('../../images/food_delivery_icon.png')}
+            />
+            <TextInput
+              placeholder={'Email'}
+              onChangeText={setEmail}
+            />
+            {isRegister &&
+              <TextInput
+                placeholder={'Phone'}
+                onChangeText={setPhone}
+              />
             }
-            onPress={toggleScreen}
-          />
-        </View>
-      </View>
+            <TextInput
+              placeholder={'Password'}
+              secureText
+              onChangeText={setPassword}
+            />
+            <View style={styles.buttonContainer}>
+              <ButtonWithTitle
+                title={title}
+                onPress={onPressAuthenticate}
+              />
+              <ButtonLink
+                title={
+                  !isRegister ? 'No Account? Register Here' : 'Have an Account? Login Here'
+                }
+                onPress={toggleScreen}
+              />
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </View>
   );
 };
