@@ -11,6 +11,11 @@ interface LoginAction {
   payload: IUser;
 }
 
+interface RegisterAction {
+  type: typeof ActionType.REGISTER;
+  payload: IUser;
+}
+
 interface AddToCartAction {
   type: typeof ActionType.ADD_TO_CART;
   payload: IFoodItem;
@@ -29,6 +34,7 @@ interface UserErrorAction {
 export type UserAction =
   | UpdateLocationAction
   | LoginAction
+  | RegisterAction
   | AddToCartAction
   | RemoveFromCartAction
   | UserErrorAction;

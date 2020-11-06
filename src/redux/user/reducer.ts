@@ -17,6 +17,7 @@ export const userReducer = (state = initialState, action: UserAction) => {
         location: action.payload,
       };
     case ActionType.LOGIN:
+    case ActionType.REGISTER:
       return {
         ...state,
         user: action.payload,
