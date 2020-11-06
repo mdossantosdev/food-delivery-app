@@ -53,11 +53,13 @@ export const Login: FC = () => {
             />
             <TextInput
               placeholder={'Email'}
+              keyboardType={'email-address'}
               onChangeText={setEmail}
             />
             {isRegister &&
               <TextInput
                 placeholder={'Phone'}
+                keyboardType={'numeric'}
                 onChangeText={setPhone}
               />
             }
