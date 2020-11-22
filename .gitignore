@@ -11,6 +11,7 @@ web-build/
 
 # environment
 .env
+.vscode
 
 # macOS
 .DS_Store

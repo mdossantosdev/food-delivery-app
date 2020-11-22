@@ -2,7 +2,8 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
-import { IFoodItem, ILocationGeocode } from '../../shared/interfaces';
+import { IUser, IFoodItem, ILocationGeocode } from '../../shared/interfaces';
+import { BASE_URL } from 'react-native-dotenv';
 
 export const updateLocation = (location: ILocationGeocode): AppThunkAction => async (dispatch) => {
   try {
@@ -51,7 +52,7 @@ export const removeFromCart = (item: IFoodItem): AppThunkAction => async (dispat
 
 export const login = (email: string, password: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.post(`URL`, { email, password });
+    const response = await axios.post<IUser>(`${BASE_URL}/user/login`, { email, password });
 
     if (!response) {
       dispatch({
