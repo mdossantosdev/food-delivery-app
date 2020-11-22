@@ -75,7 +75,7 @@ export const login = (email: string, password: string): AppThunkAction => async 
 
 export const register = (email: string, phone: string, password: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.post(`URL`, { email, phone, password });
+    const response = await axios.post<IUser>(`${BASE_URL}/user/register`, { email, phone, password });
 
     if (!response) {
       dispatch({
