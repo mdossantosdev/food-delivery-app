@@ -4,6 +4,7 @@ export interface IUser {
   email: string;
   password: string;
   phone: string;
+  verified: boolean;
 }
 
 export interface IUserState {

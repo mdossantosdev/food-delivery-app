@@ -12,7 +12,7 @@ import { Routes } from '../../navigation/routes';
 
 export const Cart: FC = () => {
   const navigation = useNavigation();
-  const { cart } = useAppSelector((state) => state.user);
+  const { cart, user } = useAppSelector((state) => state.user);
 
   const [totalAmount, setTotalAmount] = useState(0);
 
@@ -26,6 +26,13 @@ export const Cart: FC = () => {
       total += item.price * item.quantity;
     })
     setTotalAmount(total);
+  }
+
+  const validateOrder = () => {
+    if (!user.verified) {
+      return navigation.navigate(Routes.Login);
+    }
+    console.log('Order Now');
   }
 
   if (cart.length === 0) {
@@ -62,7 +69,7 @@ export const Cart: FC = () => {
         </View>
         <ButtonWithTitle
           title={'Order Now'}
-          onPress={() => navigation.navigate(Routes.Login)}
+          onPress={validateOrder}
         />
       </View>
     </View>
