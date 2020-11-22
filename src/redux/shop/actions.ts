@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
+import { BASE_URL } from 'react-native-dotenv';
 
 export const availabilityByPostCode = (postCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get(`URL${postCode}`);
+    const response = await axios.get(`${BASE_URL}/food/availability/${postCode}`);
 
     if (!response) {
       dispatch({
@@ -27,7 +28,7 @@ export const availabilityByPostCode = (postCode: string): AppThunkAction => asyn
 
 export const foodSearchByPostCode = (postCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get(`URL${postCode}`);
+    const response = await axios.get(`${BASE_URL}/food/search/${postCode}`);
 
     if (!response) {
       dispatch({
