@@ -20,7 +20,7 @@ export const TextInput: FC<Props> = ({
         autoCapitalize='none'
         keyboardType={keyboardType}
         secureTextEntry={secureText}
-        maxLength={ isOtp ? 6 : 60}
+        maxLength={isOtp ? 6 : 60}
         onChangeText={(text) => onChangeText(text)}
       />
     </View>

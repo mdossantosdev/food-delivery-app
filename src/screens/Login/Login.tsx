@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -27,8 +27,16 @@ export const Login: FC = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [otp, setOtp] = useState('');
   const [verified, setVerified] = useState(false);
-  const [requestOtpTitle, setRequestOtpTitle] = useState('Request a New OTP in');
-  const [canRequestOtp, setCanRequestOtp] = useState(true);
+  const [requestOtpTitle, setRequestOtpTitle] = useState('Request a new OTP in');
+  const [canRequestOtp, setCanRequestOtp] = useState(false);
+
+  let countDown: number;
+
+  useEffect(() => {
+    enableOtpRequest();
+
+    return () => clearInterval(countDown);
+  }, []);
 
   const toggleScreen = () => {
     setIsRegister(!isRegister);
@@ -39,6 +47,28 @@ export const Login: FC = () => {
     isRegister
       ? dispatch(register(email, phone, password))
       : dispatch(login(email, password));
+  }
+
+  const enableOtpRequest = () => {
+    const otpDate = new Date();
+    otpDate.setTime(new Date().getTime() + (2 * 60 * 1000));
+    const otpTime = otpDate.getTime();
+
+    countDown = setInterval(() => {
+      const currentTime = new Date().getTime();
+      const totalTime = otpTime - currentTime;
+
+      let minutes = Math.floor((totalTime % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((totalTime % (1000 * 60)) / 1000);
+
+      setRequestOtpTitle(`Request a new OTP in ${minutes}:${seconds}`);
+
+      if (minutes < 1 && seconds < 1) {
+        setRequestOtpTitle('Request a new OTP');
+        setCanRequestOtp(true);
+        clearInterval(countDown);
+      }
+    }, 1000)
   }
 
   if (!verified) {
