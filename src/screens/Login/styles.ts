@@ -30,4 +30,24 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 20,
   },
+  otpContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  otpIcon: {
+    fontSize: 120,
+    color: 'rgb(28, 202, 255)',
+    marginVertical: 15,
+  },
+  otpTitle: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: 'rgb(0, 0, 0)',
+    marginVertical: 5,
+  },
+  otpSubTitle: {
+    fontSize: 16,
+    marginVertical: 15,
+  },
 });
