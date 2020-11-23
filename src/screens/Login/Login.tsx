@@ -56,6 +56,7 @@ export const Login: FC = () => {
               <TextInput
                 placeholder='OTP'
                 keyboardType={'numeric'}
+                isOtp={true}
                 onChangeText={setOtp}
               />
               <ButtonWithTitle

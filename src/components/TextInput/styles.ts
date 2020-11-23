@@ -26,4 +26,10 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color:'rgb(0, 0, 0)',
   },
+  otpInput: {
+    flex: 1,
+    fontSize: 25,
+    color: 'rgb(0, 0, 0)',
+    textAlign: 'center',
+  },
 });

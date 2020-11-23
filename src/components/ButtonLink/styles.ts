@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 25,
+    marginTop: 20,
   },
   titleActive: {
     fontSize: 16,
