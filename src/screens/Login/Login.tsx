@@ -28,6 +28,7 @@ export const Login: FC = () => {
   const [otp, setOtp] = useState('');
   const [verified, setVerified] = useState(false);
   const [requestOtpTitle, setRequestOtpTitle] = useState('Request a New OTP in');
+  const [canRequestOtp, setCanRequestOtp] = useState(true);
 
   const toggleScreen = () => {
     setIsRegister(!isRegister);
@@ -63,6 +64,7 @@ export const Login: FC = () => {
               />
               <ButtonLink
                 title={requestOtpTitle}
+                disabled={!canRequestOtp}
                 onPress={() => {}}
               />
             </View>
