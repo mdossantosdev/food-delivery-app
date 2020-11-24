@@ -120,3 +120,28 @@ export const verifyOTP = (otp: string, user: IUser): AppThunkAction => async (di
     });
   }
 };
+
+export const otpRequest = (user: IUser): AppThunkAction => async (dispatch) => {
+  try {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+
+    const response = await axios.get<IUser>(`${BASE_URL}/user/verify`);
+
+    if (!response) {
+      dispatch({
+        type: ActionType.USER_ERROR,
+        payload: 'OTP Request Error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.LOGIN,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
