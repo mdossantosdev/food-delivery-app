@@ -15,7 +15,7 @@ import { TextInput } from '../../components/TextInput';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { ButtonLink } from '../../components/ButtonLink';
 import { useAppDispatch } from '../../hooks/reduxHooks';
-import { login, register } from '../../redux/user/actions';
+import { login, register, verifyOTP } from '../../redux/user/actions';
 
 export const Login: FC = () => {
   const dispatch = useAppDispatch();

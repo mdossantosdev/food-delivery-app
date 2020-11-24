@@ -95,3 +95,28 @@ export const register = (email: string, phone: string, password: string): AppThu
     });
   }
 };
+
+export const verifyOTP = (otp: string, user: IUser): AppThunkAction => async (dispatch) => {
+  try {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+
+    const response = await axios.patch<IUser>(`${BASE_URL}/user/verify`, { otp });
+
+    if (!response) {
+      dispatch({
+        type: ActionType.USER_ERROR,
+        payload: 'OTP Verification Error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.LOGIN,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
