@@ -96,7 +96,7 @@ export const register = (email: string, phone: string, password: string): AppThu
   }
 };
 
-export const verifyOTP = (otp: string, user: IUser): AppThunkAction => async (dispatch) => {
+export const verifyOtp = (otp: string, user: IUser): AppThunkAction => async (dispatch) => {
   try {
     axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
 
@@ -125,7 +125,7 @@ export const otpRequest = (user: IUser): AppThunkAction => async (dispatch) => {
   try {
     axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
 
-    const response = await axios.get<IUser>(`${BASE_URL}/user/verify`);
+    const response = await axios.get<IUser>(`${BASE_URL}/user/otp`);
 
     if (!response) {
       dispatch({

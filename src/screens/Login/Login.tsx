@@ -8,17 +8,21 @@ import {
   Platform,
   Keyboard
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { TextInput } from '../../components/TextInput';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { ButtonLink } from '../../components/ButtonLink';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import { login, register, verifyOTP, otpRequest } from '../../redux/user/actions';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { login, register, verifyOtp, otpRequest } from '../../redux/user/actions';
+import { Routes } from '../../navigation/routes';
 
 export const Login: FC = () => {
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
 
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -26,17 +30,24 @@ export const Login: FC = () => {
   const [title, setTitle] = useState('Login');
   const [isRegister, setIsRegister] = useState(false);
   const [otp, setOtp] = useState('');
-  const [verified, setVerified] = useState(false);
+  const [verified, setVerified] = useState(true);
   const [requestOtpTitle, setRequestOtpTitle] = useState('Request a new OTP in');
   const [canRequestOtp, setCanRequestOtp] = useState(false);
 
   let countDown: number;
 
   useEffect(() => {
-    enableOtpRequest();
+    if (user.token !== undefined) {
+      if (user.verified) {
+        navigation.navigate(Routes.Cart);
+      } else {
+        setVerified(user.verified);
+        enableOtpRequest();
+      }
+    }
 
     return () => clearInterval(countDown);
-  }, []);
+  }, [user]);
 
   const toggleScreen = () => {
     setIsRegister(!isRegister);
@@ -47,6 +58,11 @@ export const Login: FC = () => {
     isRegister
       ? dispatch(register(email, phone, password))
       : dispatch(login(email, password));
+  }
+
+  const onPressRequestNewOtp = () => {
+    setCanRequestOtp(false);
+    dispatch(otpRequest(user));
   }
 
   const enableOtpRequest = () => {
@@ -91,12 +107,12 @@ export const Login: FC = () => {
               />
               <ButtonWithTitle
                 title='Verify OTP'
-                onPress={() => console.log(otp)}
+                onPress={() => dispatch(verifyOtp(otp, user))}
               />
               <ButtonLink
                 title={requestOtpTitle}
                 disabled={!canRequestOtp}
-                onPress={() => {}}
+                onPress={onPressRequestNewOtp}
               />
             </View>
           </TouchableWithoutFeedback>
