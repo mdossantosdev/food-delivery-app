@@ -77,7 +77,9 @@ export const Login: FC = () => {
       let minutes = Math.floor((totalTime % (1000 * 60 * 60)) / (1000 * 60));
       let seconds = Math.floor((totalTime % (1000 * 60)) / 1000);
 
-      setRequestOtpTitle(`Request a new OTP in ${minutes}:${seconds}`);
+      setRequestOtpTitle(
+        `Request a new OTP in 0${minutes}:${seconds < 10 ? `0${seconds}` : `${seconds}`}`
+      );
 
       if (minutes < 1 && seconds < 1) {
         setRequestOtpTitle('Request a new OTP');
