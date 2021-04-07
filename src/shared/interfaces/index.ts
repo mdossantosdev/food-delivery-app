@@ -40,6 +40,17 @@ export interface IRestaurant {
   foods: IFoodItem[];
 }
 
+export interface IOrder {
+  _id: string;
+  orderId: string;
+  items: [];
+  totalAmount: number;
+  orderDate: number;
+  paidThrough: string;
+  paymentResponse: string;
+  orderStatus: string;
+}
+
 export interface IFoodAvailability {
   categories: ICategory[];
   restaurants: IRestaurant[];

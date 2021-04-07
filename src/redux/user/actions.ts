@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
-import { IUser, IFoodItem, ILocationGeocode } from '../../shared/interfaces';
+import { IUser, IFoodItem, ILocationGeocode, IOrder } from '../../shared/interfaces';
 import { BASE_URL } from 'react-native-dotenv';
 
 export const updateLocation = (location: ILocationGeocode): AppThunkAction => async (dispatch) => {
@@ -156,7 +156,7 @@ export const createOrder = (cartItems: IFoodItem[], user: IUser): AppThunkAction
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
 
-    const response = await axios.post(`${BASE_URL}/user/create-order`, { cart });
+    const response = await axios.post<IOrder>(`${BASE_URL}/user/create-order`, { cart });
 
     if (!response) {
       dispatch({
