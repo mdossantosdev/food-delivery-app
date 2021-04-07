@@ -8,12 +8,13 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 import { styles } from './styles';
 import { FoodCard } from '../../components/FoodCard';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
+import { BottomSheetPayment } from '../../components/BottomSheetPayment';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { Routes } from '../../navigation/routes';
 
 export const Cart: FC = () => {
   const navigation = useNavigation();
-  const { cart, user } = useAppSelector((state) => state.user);
+  const { cart, user, location } = useAppSelector((state) => state.user);
 
   const [totalAmount, setTotalAmount] = useState(0);
 
@@ -57,11 +58,10 @@ export const Cart: FC = () => {
         height={360}
         customStyles={customStyles}
       >
-        <View>
-          <Text>
-            Payment Options
-          </Text>
-        </View>
+        <BottomSheetPayment
+          amount={totalAmount}
+          location={location}
+        />
       </PaymentTypePopup>
     )
   }
