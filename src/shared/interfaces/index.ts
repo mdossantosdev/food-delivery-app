@@ -40,10 +40,16 @@ export interface IRestaurant {
   foods: IFoodItem[];
 }
 
+export interface ICart {
+  _id: string;
+  food: IFoodItem;
+  quantity: number;
+}
+
 export interface IOrder {
   _id: string;
   orderId: string;
-  items: [];
+  items: ICart[];
   totalAmount: number;
   orderDate: number;
   paidThrough: string;
