@@ -1,7 +1,8 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, createRef } from 'react';
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import PaymentTypePopup from 'react-native-raw-bottom-sheet';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
@@ -16,6 +17,8 @@ export const Cart: FC = () => {
 
   const [totalAmount, setTotalAmount] = useState(0);
 
+  const popupRef = createRef<PaymentTypePopup>();
+
   useEffect(() => {
     calculateAmount();
   }, [cart]);
@@ -29,10 +32,38 @@ export const Cart: FC = () => {
   }
 
   const validateOrder = () => {
-    if (!user.verified) {
+    if (!user || !user.verified) {
       return navigation.navigate(Routes.Login);
     }
-    console.log('Order Now');
+
+    popupRef.current?.open();
+  }
+
+  const popupView =  () => {
+    const customStyles = {
+      draggableIcon: {
+        backgroundColor: 'rgb(143, 143, 143)'
+      },
+      container: {
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+      }
+    };
+
+    return (
+      <PaymentTypePopup
+        ref={popupRef}
+        closeOnDragDown
+        height={360}
+        customStyles={customStyles}
+      >
+        <View>
+          <Text>
+            Payment Options
+          </Text>
+        </View>
+      </PaymentTypePopup>
+    )
   }
 
   if (cart.length === 0) {
@@ -72,6 +103,7 @@ export const Cart: FC = () => {
           onPress={validateOrder}
         />
       </View>
+      {popupView()}
     </View>
   );
 };
