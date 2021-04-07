@@ -145,3 +145,34 @@ export const otpRequest = (user: IUser): AppThunkAction => async (dispatch) => {
     });
   }
 };
+
+export const createOrder = (cartItems: IFoodItem[], user: IUser): AppThunkAction => async (dispatch) => {
+  try {
+    let cart = new Array();
+
+    cartItems.map(item => {
+      cart.push({ _id: item._id, quantity: item.quantity });
+    })
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+
+    const response = await axios.post(`${BASE_URL}/user/create-order`, { cart });
+
+    if (!response) {
+      dispatch({
+        type: ActionType.USER_ERROR,
+        payload: 'Create Order Error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.CREATE_ORDER,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
