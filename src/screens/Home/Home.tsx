@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
-import { HomeScreenProps } from './types';
+import { HomeNavigationProp } from './types';
 import { SearchBar } from '../../components/SearchBar';
 import { CategoryCard } from '../../components/CategoryCard';
 import { RestaurantCard } from '../../components/RestaurantCard';
@@ -14,12 +14,12 @@ import { availabilityByPostCode, foodSearchByPostCode } from '../../redux/shop/a
 import { Routes } from '../../navigation/routes';
 
 export const Home: FC = () => {
-  const navigation = useNavigation<HomeScreenProps>();
+  const navigation = useNavigation<HomeNavigationProp>();
   const dispatch = useAppDispatch();
 
   const {
     location: { name, postalCode, city }
-  } = useAppSelector(state => state.user);
+  } = useAppSelector((state) => state.user);
 
   const {
     availability: { categories, restaurants, foods }
