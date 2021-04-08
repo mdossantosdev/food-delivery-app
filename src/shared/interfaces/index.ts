@@ -10,6 +10,7 @@ export interface IUserState {
   user: IUser;
   location: ILocationGeocode;
   cart: IFoodItem[];
+  orders: IOrder[];
   error: string | undefined;
 }
 
