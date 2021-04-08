@@ -37,11 +37,6 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
   },
-  emptyCartContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   emptyText: {
     fontSize: 24,
     fontWeight: '700',
@@ -51,5 +46,9 @@ export const styles = StyleSheet.create({
   emptyIcon: {
     fontSize: 42,
     color: 'rgb(0, 0, 0)',
+  },
+  ordersIcon: {
+    fontSize: 34,
+    color: 'rgb(41, 143, 163)',
   },
 });

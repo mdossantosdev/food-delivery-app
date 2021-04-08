@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, createRef } from 'react';
 import { View, Text } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import PaymentTypePopup from 'react-native-raw-bottom-sheet';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
@@ -76,9 +76,22 @@ export const Cart: FC = () => {
 
   if (cart.length === 0) {
     return (
-      <View style={styles.emptyCartContainer}>
-        <Text style={styles.emptyText}>Your Cart is Empty</Text>
-        <Icon name='cart-outline' style={styles.emptyIcon} />
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>My Cart</Text>
+          { user.token &&
+            <TouchableOpacity onPress={() => {}}>
+              <Icon
+                name='receipt'
+                style={styles.ordersIcon}
+              />
+            </TouchableOpacity>
+          }
+        </View>
+        <View style={styles.cardContainer}>
+          <Text style={styles.emptyText}>Your Cart is Empty</Text>
+          <Icon name='cart-outline' style={styles.emptyIcon} />
+        </View>
       </View>
     )
   }
@@ -87,6 +100,14 @@ export const Cart: FC = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>My Cart</Text>
+        { user.token &&
+          <TouchableOpacity onPress={() => {}}>
+            <Icon
+              name='receipt'
+              style={styles.ordersIcon}
+            />
+          </TouchableOpacity>
+        }
       </View>
       <View style={styles.cardContainer}>
         <FlatList
