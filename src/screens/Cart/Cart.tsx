@@ -80,7 +80,7 @@ export const Cart: FC = () => {
         <View style={styles.header}>
           <Text style={styles.title}>My Cart</Text>
           { user.token &&
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.Order)}>
               <Icon
                 name='receipt'
                 style={styles.ordersIcon}
@@ -101,7 +101,7 @@ export const Cart: FC = () => {
       <View style={styles.header}>
         <Text style={styles.title}>My Cart</Text>
         { user.token &&
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => navigation.navigate(Routes.Order)}>
             <Icon
               name='receipt'
               style={styles.ordersIcon}

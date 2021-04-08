@@ -22,4 +22,5 @@ export type HomeStackParamList = {
 export type CartStackParamList = {
   Cart: undefined;
   Login: undefined;
+  Order: undefined;
 };
