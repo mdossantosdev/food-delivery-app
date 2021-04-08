@@ -6,6 +6,7 @@ import PaymentTypePopup from 'react-native-raw-bottom-sheet';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
+import { CartNavigationProp } from './types';
 import { FoodCard } from '../../components/FoodCard';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { BottomSheetPayment } from '../../components/BottomSheetPayment';
@@ -14,7 +15,7 @@ import { createOrder } from '../../redux/user/actions';
 import { Routes } from '../../navigation/routes';
 
 export const Cart: FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<CartNavigationProp>();
   const dispatch = useAppDispatch();
   const { cart, user, location, orders } = useAppSelector((state) => state.user);
 
