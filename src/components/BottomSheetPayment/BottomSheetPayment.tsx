@@ -6,7 +6,7 @@ import { FontAwesome5 as Icon } from '@expo/vector-icons';
 import { styles } from './styles';
 import { Props } from './types';
 
-export const BottomSheetPayment: FC<Props> = ({ amount, location }) => {
+export const BottomSheetPayment: FC<Props> = ({ amount, location, placeOrder }) => {
   const { name, postalCode, city } = location;
 
   return (
@@ -31,7 +31,7 @@ export const BottomSheetPayment: FC<Props> = ({ amount, location }) => {
         keyboardShouldPersistTaps='always'
       >
         <View style={styles.paymentOptions}>
-          <TouchableOpacity style={styles.options} onPress={() => {}}>
+          <TouchableOpacity style={styles.options} onPress={() => placeOrder()}>
             <Icon name='money-bill-wave' style={styles.cashIcon}/>
             <Text style={styles.iconText}>Cash on Delivery</Text>
           </TouchableOpacity>

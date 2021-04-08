@@ -9,12 +9,14 @@ import { styles } from './styles';
 import { FoodCard } from '../../components/FoodCard';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { BottomSheetPayment } from '../../components/BottomSheetPayment';
-import { useAppSelector } from '../../hooks/reduxHooks';
+import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
+import { createOrder } from '../../redux/user/actions';
 import { Routes } from '../../navigation/routes';
 
 export const Cart: FC = () => {
   const navigation = useNavigation();
-  const { cart, user, location } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+  const { cart, user, location, orders } = useAppSelector((state) => state.user);
 
   const [totalAmount, setTotalAmount] = useState(0);
 
@@ -40,6 +42,11 @@ export const Cart: FC = () => {
     popupRef.current?.open();
   }
 
+  const placeOrder = () => {
+    dispatch(createOrder(cart, user));
+    popupRef.current?.close();
+  }
+
   const popupView =  () => {
     const customStyles = {
       draggableIcon: {
@@ -61,6 +68,7 @@ export const Cart: FC = () => {
         <BottomSheetPayment
           amount={totalAmount}
           location={location}
+          placeOrder={placeOrder}
         />
       </PaymentTypePopup>
     )

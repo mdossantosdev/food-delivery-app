@@ -28,7 +28,7 @@ interface RemoveFromCartAction {
 
 interface CreateOrderAction {
   type: typeof ActionType.CREATE_ORDER;
-  payload: IOrder;
+  payload: any;
 }
 
 interface UserErrorAction {

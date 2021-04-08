@@ -1,16 +1,16 @@
 import { ActionType } from './actionTypes';
 import { UserAction } from './types';
-import { IUser, IUserState, ILocationGeocode, IOrder } from '../../shared/interfaces';
+import { IUser, IUserState, ILocationGeocode, IOrder, IFoodItem } from '../../shared/interfaces';
 
 const initialState: IUserState = {
   user: {} as IUser,
   location: {} as ILocationGeocode,
-  cart: [],
+  cart: [] as IFoodItem[],
   orders: [] as IOrder[],
   error: undefined,
 }
 
-export const userReducer = (state = initialState, action: UserAction) => {
+export const userReducer = (state = initialState, action: UserAction): IUserState => {
   switch (action.type) {
     case ActionType.UPDATE_LOCATION:
       return {
@@ -64,8 +64,8 @@ export const userReducer = (state = initialState, action: UserAction) => {
     case ActionType.CREATE_ORDER:
       return {
         ...state,
-        cart: [],
-        orders: [...state.orders, action.payload]
+        orders: [...state.orders, action.payload],
+        cart: []
       };
     case ActionType.USER_ERROR:
       return {
