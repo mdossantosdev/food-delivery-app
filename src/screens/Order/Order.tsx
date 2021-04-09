@@ -8,6 +8,7 @@ import { OrderNavigationProp } from './types';
 import { BackButton } from '../../components/BackButton';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { getOrders } from '../../redux/user/actions';
+import { OrderCard } from '../../components/OrderCard';
 
 export const Order: FC = () => {
   const navigation = useNavigation<OrderNavigationProp>();
@@ -47,7 +48,7 @@ export const Order: FC = () => {
           showsVerticalScrollIndicator={false}
           data={orders}
           renderItem={({ item }) =>
-            <Text>{item._id}</Text>
+            <OrderCard item={item} onPress={() => console.log('Order Detail')} />
           }
           keyExtractor={(item) => `${item._id}`}
         />
