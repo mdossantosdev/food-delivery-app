@@ -67,6 +67,11 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
         orders: [...state.orders, action.payload],
         cart: []
       };
+    case ActionType.GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload
+      }
     case ActionType.USER_ERROR:
       return {
         ...state,
