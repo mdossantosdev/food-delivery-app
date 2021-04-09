@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -6,11 +6,17 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { OrderNavigationProp } from './types';
 import { BackButton } from '../../components/BackButton';
-import { useAppSelector } from '../../hooks/reduxHooks';
+import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
+import { getOrders } from '../../redux/user/actions';
 
 export const Order: FC = () => {
   const navigation = useNavigation<OrderNavigationProp>();
-  const { orders } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+  const { user, orders } = useAppSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(getOrders(user));
+  }, []);
 
   if (orders.length === 0) {
     return (

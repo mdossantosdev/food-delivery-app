@@ -17,7 +17,7 @@ import { Routes } from '../../navigation/routes';
 export const Cart: FC = () => {
   const navigation = useNavigation<CartNavigationProp>();
   const dispatch = useAppDispatch();
-  const { cart, user, location, orders } = useAppSelector((state) => state.user);
+  const { cart, user, location } = useAppSelector((state) => state.user);
 
   const [totalAmount, setTotalAmount] = useState(0);
 
