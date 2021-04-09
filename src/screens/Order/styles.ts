@@ -24,4 +24,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  emptyText: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: 'rgb(0, 0, 0)',
+  },
 });

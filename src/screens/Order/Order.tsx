@@ -12,6 +12,22 @@ export const Order: FC = () => {
   const navigation = useNavigation<OrderNavigationProp>();
   const { orders } = useAppSelector((state) => state.user);
 
+  if (orders.length === 0) {
+    return (
+      <View style={styles.container}>
+      <View style={styles.navigation}>
+        <View style={styles.iconContainer}>
+          <BackButton onPress={() => navigation.goBack()} />
+        </View>
+        <Text style={styles.title}>Orders</Text>
+      </View>
+      <View style={styles.contentContainer}>
+        <Text style={styles.emptyText}>Your Orders are Empty</Text>
+      </View>
+    </View>
+    )
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.navigation}>
