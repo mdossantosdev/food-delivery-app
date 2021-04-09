@@ -176,3 +176,28 @@ export const createOrder = (cartItems: IFoodItem[], user: IUser): AppThunkAction
     });
   }
 };
+
+export const getOrders = (user: IUser): AppThunkAction => async (dispatch) => {
+  try {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+
+    const response = await axios.get<IOrder[]>(`${BASE_URL}/user/orders`);
+
+    if (!response) {
+      dispatch({
+        type: ActionType.USER_ERROR,
+        payload: 'Get Orders Error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.GET_ORDERS,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};

@@ -31,6 +31,11 @@ interface CreateOrderAction {
   payload: any;
 }
 
+interface GetOrdersAction {
+  type: typeof ActionType.GET_ORDERS;
+  payload: IOrder[];
+}
+
 interface UserErrorAction {
   type: typeof ActionType.USER_ERROR;
   payload: any;
@@ -43,4 +48,5 @@ export type UserAction =
   | AddToCartAction
   | RemoveFromCartAction
   | CreateOrderAction
+  | GetOrdersAction
   | UserErrorAction;
