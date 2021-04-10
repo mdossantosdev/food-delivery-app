@@ -78,14 +78,11 @@ export const Cart: FC = () => {
   if (cart.length === 0) {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
+        <View style={styles.navigation}>
           <Text style={styles.title}>My Cart</Text>
           { user.token &&
             <TouchableOpacity onPress={() => navigation.navigate(Routes.Order)}>
-              <Icon
-                name='receipt'
-                style={styles.ordersIcon}
-              />
+              <Icon name='receipt' style={styles.ordersIcon} />
             </TouchableOpacity>
           }
         </View>
@@ -99,14 +96,11 @@ export const Cart: FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.navigation}>
         <Text style={styles.title}>My Cart</Text>
         { user.token &&
           <TouchableOpacity onPress={() => navigation.navigate(Routes.Order)}>
-            <Icon
-              name='receipt'
-              style={styles.ordersIcon}
-            />
+            <Icon name='receipt' style={styles.ordersIcon} />
           </TouchableOpacity>
         }
       </View>
