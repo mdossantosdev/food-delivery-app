@@ -22,16 +22,16 @@ export const Order: FC = () => {
   if (orders.length === 0) {
     return (
       <View style={styles.container}>
-      <View style={styles.navigation}>
-        <View style={styles.iconContainer}>
-          <BackButton onPress={() => navigation.goBack()} />
+        <View style={styles.navigation}>
+          <View style={styles.iconContainer}>
+            <BackButton onPress={() => navigation.goBack()} />
+          </View>
+          <Text style={styles.title}>Orders</Text>
         </View>
-        <Text style={styles.title}>Orders</Text>
+        <View style={styles.contentContainer}>
+          <Text style={styles.emptyText}>Your Orders are Empty</Text>
+        </View>
       </View>
-      <View style={styles.contentContainer}>
-        <Text style={styles.emptyText}>Your Orders are Empty</Text>
-      </View>
-    </View>
     )
   }
 
@@ -47,10 +47,10 @@ export const Order: FC = () => {
         <FlatList
           showsVerticalScrollIndicator={false}
           data={orders}
+          keyExtractor={(item) => `${item._id}`}
           renderItem={({ item }) =>
             <OrderCard item={item} onPress={() => console.log('Order Detail')} />
           }
-          keyExtractor={(item) => `${item._id}`}
         />
       </View>
     </View>

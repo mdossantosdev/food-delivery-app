@@ -120,7 +120,7 @@ export const Cart: FC = () => {
       <View style={styles.amountContainer}>
         <View style={styles.amountInnerContainer}>
           <Text style={styles.totalText}>Total</Text>
-          <Text style={styles.totalText}>$ {totalAmount}</Text>
+          <Text style={styles.totalText}>${totalAmount}</Text>
         </View>
         <ButtonWithTitle
           title={'Order Now'}
