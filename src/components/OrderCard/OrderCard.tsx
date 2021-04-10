@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import moment from 'moment';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 import { AntDesign as WarningIcon } from '@expo/vector-icons';
 
@@ -37,7 +38,9 @@ export const OrderCard: FC<Props> = ({ item, onPress }) => {
       <View style={styles.contentContainer}>
         <View style={styles.orderContainer}>
           <Text style={styles.orderIdText}>Order ID: {item.orderId}</Text>
-          <Text style={styles.orderDateText}>{item.orderDate}</Text>
+          <Text style={styles.orderDateText}>
+            {moment(item.orderDate).format('MMMM Do YY, h:mm a')}
+          </Text>
           <Text style={styles.orderAmountText}>${item.totalAmount}</Text>
         </View>
         {orderStatus()}
