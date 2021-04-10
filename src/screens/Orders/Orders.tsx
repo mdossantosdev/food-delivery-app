@@ -10,7 +10,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { getOrders } from '../../redux/user/actions';
 import { OrderCard } from '../../components/OrderCard';
 
-export const Order: FC = () => {
+export const Orders: FC = () => {
   const navigation = useNavigation<OrderNavigationProp>();
   const dispatch = useAppDispatch();
   const { user, orders } = useAppSelector((state) => state.user);

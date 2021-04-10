@@ -4,5 +4,5 @@ import { Routes } from '../../navigation/routes';
 
 export type OrderNavigationProp = StackNavigationProp<
   CartStackParamList,
-  Routes.Order
+  Routes.Orders
 >;

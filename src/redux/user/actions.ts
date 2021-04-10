@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { BASE_URL } from 'react-native-dotenv';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
 import { IUser, IFoodItem, ILocationGeocode, IOrder } from '../../shared/interfaces';
-import { BASE_URL } from 'react-native-dotenv';
 
 export const updateLocation = (location: ILocationGeocode): AppThunkAction => async (dispatch) => {
   try {

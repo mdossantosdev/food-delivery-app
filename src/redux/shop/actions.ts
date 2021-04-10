@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { BASE_URL } from 'react-native-dotenv';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
-import { BASE_URL } from 'react-native-dotenv';
 
 export const availabilityByPostCode = (postCode: string): AppThunkAction => async (dispatch) => {
   try {

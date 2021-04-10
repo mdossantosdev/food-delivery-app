@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
-import { BottomTabStackParamList } from './types';
 import { Routes } from './routes';
+import { BottomTabStackParamList } from './types';
 import { HomeNavigator } from './HomeNavigator';
 import { CartNavigator } from './CartNavigator';
 import { Account } from '../screens/Account';
