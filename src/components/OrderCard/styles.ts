@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     width: width - 20,
     height: 102,
-    marginBottom: 15,
+    margin: 10,
     borderWidth: 1,
     borderColor: 'rgb(234, 234, 234)',
     borderRadius: 20,
@@ -32,7 +32,6 @@ export const styles = StyleSheet.create({
     flex: 8,
     justifyContent: 'space-around',
     alignItems: 'flex-start',
-    marginTop: 5,
     paddingLeft: 15,
   },
   orderIdText: {
@@ -48,5 +47,27 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     color: 'rgb(0, 0, 0)',
+  },
+  statusContainer: {
+    flex: 4,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    padding: 5,
+  },
+  progressIcon: {
+    fontSize: 32,
+    color: 'rgb(0, 0, 0)',
+  },
+  orderIcon: {
+    fontSize: 32,
+    color: 'rgb(41, 143, 163)',
+  },
+  warningIcon: {
+    fontSize: 32,
+    color: 'rgb(255, 0, 0)',
+  },
+  statusMessageText: {
+    fontSize: 12,
+    color: 'rgb(143, 143, 143)',
   },
 });
