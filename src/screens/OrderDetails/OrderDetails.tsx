@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
 import { View, Text } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { OrderDetailsNavigationProp, OrderDetailsRouteProp } from './types';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { BackButton } from '../../components/BackButton';
+import { FoodCard } from '../../components/FoodCard';
 
 export const OrderDetails: FC = () => {
   const navigation = useNavigation<OrderDetailsNavigationProp>();
@@ -13,7 +16,25 @@ export const OrderDetails: FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text>OrderDetails Screen</Text>
+      <View style={styles.navigation}>
+        <View style={styles.iconContainer}>
+          <BackButton onPress={() => navigation.goBack()} />
+        </View>
+        <Text style={styles.title}>Order ID: {order.orderId}</Text>
+      </View>
+      <View style={styles.contentContainer}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={order.items}
+          keyExtractor={(item) => `${item._id}`}
+          renderItem={({ item }) =>
+            <FoodCard
+              item={item.food}
+              onPress={() => {}}
+            />
+          }
+        />
+      </View>
     </View>
   );
 };
