@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import moment from 'moment';
 
 import { styles } from './styles';
 import { OrderDetailsNavigationProp, OrderDetailsRouteProp } from './types';
@@ -13,6 +14,17 @@ export const OrderDetails: FC = () => {
   const route = useRoute<OrderDetailsRouteProp>();
 
   const { order } = route.params;
+
+  const headerOrder = () => {
+    return (
+      <View style={styles.headerContainer}>
+        <Text style={styles.orderText}>Order Date: {moment(order.orderDate).format('MMMM Do YY, h:mm a')}</Text>
+        <Text style={styles.orderText}>Order Amount: ${order.totalAmount}</Text>
+        <Text style={styles.orderText}>Paid Through: {order.paidThrough}</Text>
+        <Text style={styles.orderText}>Status: {order.orderStatus}</Text>
+      </View>
+    )
+  }
 
   return (
     <View style={styles.container}>
@@ -34,6 +46,7 @@ export const OrderDetails: FC = () => {
               onPress={() => {}}
             />
           }
+          ListHeaderComponent={headerOrder()}
         />
       </View>
     </View>

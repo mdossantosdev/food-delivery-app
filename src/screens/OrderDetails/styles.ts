@@ -22,4 +22,14 @@ export const styles = StyleSheet.create({
   contentContainer: {
     flex: 11,
   },
+  headerContainer: {
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+  },
+  orderText: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: 'rgb(143, 143, 143)',
+    marginBottom: 8,
+  },
 });
