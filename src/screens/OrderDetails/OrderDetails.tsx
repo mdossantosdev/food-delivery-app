@@ -26,6 +26,27 @@ export const OrderDetails: FC = () => {
     )
   }
 
+  const footerOrder = () => {
+    if (order.orderStatus.toLowerCase() === 'cancelled') {
+      return (
+        <View style={styles.footerContainer}>
+          <Text style={styles.footerText}>Order is cancelled</Text>
+        </View>
+      )
+    }
+
+    return (
+      <View>
+        <View style={styles.mapContainer}>
+          <Text>Map View</Text>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Text>Cancel Order Button</Text>
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.navigation}>
@@ -47,6 +68,7 @@ export const OrderDetails: FC = () => {
             />
           }
           ListHeaderComponent={headerOrder()}
+          ListFooterComponent={footerOrder()}
         />
       </View>
     </View>

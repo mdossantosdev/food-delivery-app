@@ -32,4 +32,27 @@ export const styles = StyleSheet.create({
     color: 'rgb(143, 143, 143)',
     marginBottom: 8,
   },
+  footerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 200,
+    marginBottom: 10,
+  },
+  footerText: {
+    fontSize: 18,
+    fontWeight: '500'
+  },
+  mapContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 300,
+    marginVertical: 20,
+    marginHorizontal: 10,
+    backgroundColor: 'rgb(197, 197, 197)',
+  },
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 30,
+  },
 });
