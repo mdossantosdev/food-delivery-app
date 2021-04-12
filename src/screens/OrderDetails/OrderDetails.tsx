@@ -30,6 +30,7 @@ export const OrderDetails: FC = () => {
           renderItem={({ item }) =>
             <FoodCard
               item={item.food}
+              quantity={item.quantity}
               onPress={() => {}}
             />
           }

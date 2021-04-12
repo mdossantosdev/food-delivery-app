@@ -51,7 +51,12 @@ export const styles = StyleSheet.create({
     marginRight: 5,
   },
   priceText: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
+  },
+  quantityText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: 'rgb(0, 0, 0)'
   },
 });

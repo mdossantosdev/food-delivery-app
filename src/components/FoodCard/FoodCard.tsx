@@ -9,7 +9,7 @@ import { AddButton } from '../AddButton';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { addToCart, removeFromCart } from '../../redux/user/actions';
 
-export const FoodCard: FC<Props> = ({ item, onPress }) => {
+export const FoodCard: FC<Props> = ({ item, quantity, onPress }) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -23,16 +23,16 @@ export const FoodCard: FC<Props> = ({ item, onPress }) => {
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>$ {item.price}</Text>
           {
-            item.quantity > 0
-              ? (
-                  <QuantityButtons
-                    addItem={() => dispatch(addToCart(item))}
-                    removeItem={() => dispatch(removeFromCart(item))}
-                    quantity={item.quantity}
-                  />
-              ) : (
-                <AddButton addItem={() => dispatch(addToCart(item))}/>
-              )
+            quantity !== undefined ?
+              <Text style={styles.quantityText}>Qty: {quantity}</Text>
+            : item.quantity > 0 ?
+              <QuantityButtons
+                addItem={() => dispatch(addToCart(item))}
+                removeItem={() => dispatch(removeFromCart(item))}
+                quantity={item.quantity}
+              />
+            :
+              <AddButton addItem={() => dispatch(addToCart(item))}/>
           }
         </View>
       </View>
