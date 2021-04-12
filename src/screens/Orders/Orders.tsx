@@ -9,6 +9,7 @@ import { BackButton } from '../../components/BackButton';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { getOrders } from '../../redux/user/actions';
 import { OrderCard } from '../../components/OrderCard';
+import { Routes } from '../../navigation/routes';
 
 export const Orders: FC = () => {
   const navigation = useNavigation<OrderNavigationProp>();
@@ -49,7 +50,10 @@ export const Orders: FC = () => {
           data={orders}
           keyExtractor={(item) => `${item._id}`}
           renderItem={({ item }) =>
-            <OrderCard item={item} onPress={() => console.log('Order Detail')} />
+            <OrderCard
+              item={item}
+              onPress={() => navigation.navigate(Routes.OrderDetails, { order: item })}
+            />
           }
         />
       </View>

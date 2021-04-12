@@ -6,6 +6,7 @@ import { CartStackParamList } from './types';
 import { Cart } from '../screens/Cart';
 import { Login } from '../screens/Login';
 import { Orders } from '../screens/Orders';
+import { OrderDetails } from '../screens/OrderDetails';
 
 const Stack = createStackNavigator<CartStackParamList>();
 
@@ -15,6 +16,7 @@ export const CartNavigator: FC = () => {
       <Stack.Screen name={Routes.Cart} component={Cart} />
       <Stack.Screen name={Routes.Login} component={Login} />
       <Stack.Screen name={Routes.Orders} component={Orders} />
+      <Stack.Screen name={Routes.OrderDetails} component={OrderDetails} />
     </Stack.Navigator>
   );
 };

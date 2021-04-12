@@ -8,6 +8,7 @@ export enum Routes {
   HomeNavigator = 'HomeNavigator',
   Login = 'Login',
   Offers = 'Offers',
+  OrderDetails = 'OrderDetails',
   Orders = 'Orders',
   Restaurant = 'Restaurant',
   Search = 'Search',

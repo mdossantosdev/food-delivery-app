@@ -1,4 +1,4 @@
-import { IRestaurant, IFoodItem } from '../shared/interfaces';
+import { IRestaurant, IFoodItem, IOrder } from '../shared/interfaces';
 
 export type AppStackParamList = {
   Welcome: undefined;
@@ -23,4 +23,5 @@ export type CartStackParamList = {
   Cart: undefined;
   Login: undefined;
   Orders: undefined;
+  OrderDetails : { order: IOrder };
 };
