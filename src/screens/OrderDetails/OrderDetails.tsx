@@ -8,6 +8,7 @@ import { OrderDetailsNavigationProp, OrderDetailsRouteProp } from './types';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
+import { RedButton } from '../../components/RedButton';
 
 export const OrderDetails: FC = () => {
   const navigation = useNavigation<OrderDetailsNavigationProp>();
@@ -41,7 +42,7 @@ export const OrderDetails: FC = () => {
           <Text>Map View</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <Text>Cancel Order Button</Text>
+          <RedButton title='Cancel Order' onPress={() => console.log('Cancel')} />
         </View>
       </View>
     )

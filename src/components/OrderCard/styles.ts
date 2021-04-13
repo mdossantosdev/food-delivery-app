@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
   },
   warningIcon: {
     fontSize: 32,
-    color: 'rgb(255, 0, 0)',
+    color: 'rgb(235, 71, 71)',
   },
   statusMessageText: {
     fontSize: 12,

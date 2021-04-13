@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 10,
     borderRadius: 25,
-    backgroundColor: 'rgb(41, 143, 163)',
+    backgroundColor: 'rgb(235, 71, 71)',
     shadowColor: 'rgb(23, 23, 23)',
     shadowOffset: {
       width: 1,

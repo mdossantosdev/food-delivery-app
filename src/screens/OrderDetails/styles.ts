@@ -51,8 +51,6 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgb(197, 197, 197)',
   },
   buttonContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
     marginVertical: 30,
   },
 });
