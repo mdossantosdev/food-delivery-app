@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import moment from 'moment';
 
@@ -15,6 +15,19 @@ export const OrderDetails: FC = () => {
   const route = useRoute<OrderDetailsRouteProp>();
 
   const { order } = route.params;
+
+  const onPressCancelOrder = () => {
+    Alert.alert(
+      'Do you want to cancel this Order?',
+      'Cancellation charges may apply according to the terms and conditions!',
+      [
+        { text: 'No', onPress: () => {}, style: 'cancel'},
+        { text: 'Yes', onPress: () => {
+          navigation.goBack();
+        }}
+      ]
+    )
+  }
 
   const headerOrder = () => {
     return (
@@ -42,7 +55,7 @@ export const OrderDetails: FC = () => {
           <Text>Map View</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <RedButton title='Cancel Order' onPress={() => console.log('Cancel')} />
+          <RedButton title='Cancel Order' onPress={() => onPressCancelOrder()} />
         </View>
       </View>
     )
