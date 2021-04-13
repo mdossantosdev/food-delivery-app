@@ -1,28 +1,33 @@
 import React, { FC } from 'react';
 import { View, Text, Alert } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import moment from 'moment';
 
 import { styles } from './styles';
 import { OrderDetailsNavigationProp, OrderDetailsRouteProp } from './types';
-import { useNavigation, useRoute } from '@react-navigation/native';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
 import { RedButton } from '../../components/RedButton';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { cancelOrder } from '../../redux/user/actions';
 
 export const OrderDetails: FC = () => {
   const navigation = useNavigation<OrderDetailsNavigationProp>();
   const route = useRoute<OrderDetailsRouteProp>();
+  const dispatch = useAppDispatch();
 
   const { order } = route.params;
+  const { user } = useAppSelector((state) => state.user);
 
   const onPressCancelOrder = () => {
     Alert.alert(
-      'Do you want to cancel this Order?',
+      'Do you want to cancel this order?',
       'Cancellation charges may apply according to the terms and conditions!',
       [
         { text: 'No', onPress: () => {}, style: 'cancel'},
         { text: 'Yes', onPress: () => {
+          dispatch(cancelOrder(order, user));
           navigation.goBack();
         }}
       ]

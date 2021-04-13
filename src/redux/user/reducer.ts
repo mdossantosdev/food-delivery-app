@@ -68,6 +68,7 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
         cart: []
       };
     case ActionType.GET_ORDERS:
+    case ActionType.CANCEL_ORDER:
       return {
         ...state,
         orders: action.payload
