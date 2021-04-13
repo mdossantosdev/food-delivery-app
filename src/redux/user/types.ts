@@ -36,6 +36,11 @@ interface GetOrdersAction {
   payload: IOrder[];
 }
 
+interface CancelOrderAction {
+  type: typeof ActionType.CANCEL_ORDER;
+  payload: IOrder[];
+}
+
 interface UserErrorAction {
   type: typeof ActionType.USER_ERROR;
   payload: any;
@@ -49,4 +54,5 @@ export type UserAction =
   | RemoveFromCartAction
   | CreateOrderAction
   | GetOrdersAction
+  | CancelOrderAction
   | UserErrorAction;

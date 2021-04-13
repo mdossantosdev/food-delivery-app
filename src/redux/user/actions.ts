@@ -201,3 +201,28 @@ export const getOrders = (user: IUser): AppThunkAction => async (dispatch) => {
     });
   }
 };
+
+export const cancelOrder = (order: IOrder, user: IUser): AppThunkAction => async (dispatch) => {
+  try {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+
+    const response = await axios.delete<IOrder[]>(`${BASE_URL}/user/order/${order._id}`);
+
+    if (!response) {
+      dispatch({
+        type: ActionType.USER_ERROR,
+        payload: 'Cancel Order Error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.CANCEL_ORDER,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
