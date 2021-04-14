@@ -1,5 +1,6 @@
 export enum Routes {
   Account = 'Account',
+  AccountNavigator = 'AccountNavigator',
   BottomTab = 'BottomTab',
   Cart = 'Cart',
   CartNavigator = 'CartNavigator',

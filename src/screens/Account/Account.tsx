@@ -1,14 +1,17 @@
 import React, { FC } from 'react';
 import { View, Text } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { Login } from '../Login';
 import { RedButton } from '../../components/RedButton';
 import { useAppSelector } from '../../hooks/reduxHooks';
+import { Routes } from '../../navigation/routes';
 
 export const Account: FC = () => {
+  const navigation = useNavigation();
   const { user } = useAppSelector((state) => state.user);
 
   const options = [
@@ -18,7 +21,7 @@ export const Account: FC = () => {
     },
     {
       title: 'View Orders',
-      action: () => {}
+      action: () => navigation.navigate(Routes.Orders)
     },
     {
       title: 'Contact Support',

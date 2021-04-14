@@ -9,7 +9,7 @@ export type BottomTabStackParamList = {
   HomeNavigator: undefined;
   Offers: undefined;
   CartNavigator: undefined;
-  Account: undefined;
+  AccountNavigator: undefined;
 };
 
 export type HomeStackParamList = {
@@ -25,3 +25,8 @@ export type CartStackParamList = {
   Orders: undefined;
   OrderDetails : { order: IOrder };
 };
+
+export type AccountStackParamList = {
+  Account: undefined;
+  Orders: undefined;
+}

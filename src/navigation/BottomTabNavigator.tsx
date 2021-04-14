@@ -6,7 +6,7 @@ import { Routes } from './routes';
 import { BottomTabStackParamList } from './types';
 import { HomeNavigator } from './HomeNavigator';
 import { CartNavigator } from './CartNavigator';
-import { Account } from '../screens/Account';
+import { AccountNavigator } from './AccountNavigator';
 import { Offers } from '../screens/Offers';
 
 const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
@@ -55,8 +55,8 @@ export const BottomTabNavigator: FC = () => {
         }}
       />
       <BottomTab.Screen
-        name={Routes.Account}
-        component={Account}
+        name={Routes.AccountNavigator}
+        component={AccountNavigator}
         options={{
           tabBarLabel: 'Account',
           tabBarIcon: ({ focused, color }) => (
