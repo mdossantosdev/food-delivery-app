@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
@@ -8,17 +8,19 @@ import { styles } from './styles';
 import { AccountNavigationProp } from './types';
 import { Login } from '../Login';
 import { RedButton } from '../../components/RedButton';
-import { useAppSelector } from '../../hooks/reduxHooks';
+import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
+import { logout } from '../../redux/user/actions';
 import { Routes } from '../../navigation/routes';
 
 export const Account: FC = () => {
   const navigation = useNavigation<AccountNavigationProp>();
+  const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 
   const options = [
     {
       title: 'Edit Profile',
-      action: () => {}
+      action: () => Alert.alert('Edit Profile', 'Feature not implemented')
     },
     {
       title: 'View Orders',
@@ -26,9 +28,9 @@ export const Account: FC = () => {
     },
     {
       title: 'Contact Support',
-      action: () => {}
+      action: () => Alert.alert('Contact Support', 'Feature not implemented')
     }
-  ]
+  ];
 
   const optionCard = (title: string, action: Function) => {
     return (
@@ -53,7 +55,7 @@ export const Account: FC = () => {
         <ScrollView>
           { options.map(({ title, action }) => optionCard(title, action)) }
         </ScrollView>
-        <RedButton title='Logout' onPress={() => {}} />
+        <RedButton title='Logout' onPress={() => dispatch(logout())} />
       </View>
     </View>
   );
