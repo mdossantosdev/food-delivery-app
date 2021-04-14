@@ -5,13 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
+import { AccountNavigationProp } from './types';
 import { Login } from '../Login';
 import { RedButton } from '../../components/RedButton';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { Routes } from '../../navigation/routes';
 
 export const Account: FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<AccountNavigationProp>();
   const { user } = useAppSelector((state) => state.user);
 
   const options = [
