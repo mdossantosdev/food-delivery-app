@@ -41,6 +41,10 @@ interface CancelOrderAction {
   payload: IOrder[];
 }
 
+interface LogoutAction {
+  type: typeof ActionType.LOGOUT;
+}
+
 interface UserErrorAction {
   type: typeof ActionType.USER_ERROR;
   payload: any;
@@ -55,4 +59,5 @@ export type UserAction =
   | CreateOrderAction
   | GetOrdersAction
   | CancelOrderAction
+  | LogoutAction
   | UserErrorAction;

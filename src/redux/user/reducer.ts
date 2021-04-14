@@ -23,6 +23,11 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
         ...state,
         user: action.payload,
       };
+    case ActionType.LOGOUT:
+      return {
+        ...state,
+        user: {} as IUser,
+      }
     case ActionType.ADD_TO_CART:
       const existingItem = state.cart.find((item) => item._id === action.payload._id);
 
@@ -65,13 +70,13 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
       return {
         ...state,
         orders: [...state.orders, action.payload],
-        cart: []
+        cart: [],
       };
     case ActionType.GET_ORDERS:
     case ActionType.CANCEL_ORDER:
       return {
         ...state,
-        orders: action.payload
+        orders: action.payload,
       }
     case ActionType.USER_ERROR:
       return {

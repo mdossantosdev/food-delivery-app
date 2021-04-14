@@ -226,3 +226,16 @@ export const cancelOrder = (order: IOrder, user: IUser): AppThunkAction => async
     });
   }
 };
+
+export const logout = (): AppThunkAction => async (dispatch) => {
+  try {
+    dispatch({
+      type: ActionType.LOGOUT,
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
