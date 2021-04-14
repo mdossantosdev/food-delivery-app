@@ -5,6 +5,7 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { Login } from '../Login';
+import { RedButton } from '../../components/RedButton';
 import { useAppSelector } from '../../hooks/reduxHooks';
 
 export const Account: FC = () => {
@@ -48,6 +49,7 @@ export const Account: FC = () => {
         <ScrollView>
           { options.map(({ title, action }) => optionCard(title, action)) }
         </ScrollView>
+        <RedButton title='Logout' onPress={() => {}} />
       </View>
     </View>
   );
