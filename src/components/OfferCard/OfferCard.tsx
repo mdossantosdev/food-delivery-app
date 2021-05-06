@@ -16,11 +16,11 @@ export const OfferCard: FC<Props> = ({ item, onPressApply, onPressRemove, isAppl
         </View>
         <View style={styles.buttonContainer}>
           {isApplied ?
-            <TouchableOpacity style={styles.removeButton} onPress={onPressRemove()}>
+            <TouchableOpacity style={styles.removeButton} onPress={() => onPressRemove(item)}>
               <Text style={styles.textButton}>Remove</Text>
             </TouchableOpacity>
           :
-            <TouchableOpacity style={styles.applyButton} onPress={onPressApply()}>
+            <TouchableOpacity style={styles.applyButton} onPress={() => onPressApply(item)}>
               <Text style={styles.textButton}>Apply</Text>
               <Text style={styles.promoCodeText}>{item.promoCode}</Text>
             </TouchableOpacity>
