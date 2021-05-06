@@ -58,6 +58,25 @@ export interface IOrder {
   orderStatus: string;
 }
 
+export interface IOffer {
+  _id: string;
+  offerType: string;
+  merchants: any[];
+  images: string[];
+  title: string;
+  description: string;
+  minValue: number;
+  offerAmount: number;
+  offerPercentage: number;
+  startValidity: Date;
+  endValidity: Date;
+  promoCode: string;
+  promoType: string;
+  bank: any[];
+  bin: any[];
+  zipCode: string;
+}
+
 export interface IFoodAvailability {
   categories: ICategory[];
   restaurants: IRestaurant[];
