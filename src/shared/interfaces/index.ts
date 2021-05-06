@@ -86,6 +86,7 @@ export interface IFoodAvailability {
 export interface IShopState {
   availability: IFoodAvailability;
   availableFoods: IFoodItem[];
+  offers: IOffer[];
   error: string | undefined;
 }
 
