@@ -11,6 +11,7 @@ export interface IUserState {
   location: ILocationGeocode;
   cart: IFoodItem[];
   orders: IOrder[];
+  offer: IOffer;
   error: string | undefined;
 }
 

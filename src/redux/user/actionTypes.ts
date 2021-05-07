@@ -1,4 +1,5 @@
 export enum ActionType {
+  ADD_OFFER = 'ADD_OFFER',
   ADD_TO_CART = 'ADD_TO_CART',
   CANCEL_ORDER = 'CANCEL_ORDER',
   CREATE_ORDER = 'CREATE_ORDER',

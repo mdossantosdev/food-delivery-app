@@ -3,7 +3,7 @@ import { BASE_URL } from 'react-native-dotenv';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
-import { IUser, IFoodItem, ILocationGeocode, IOrder } from '../../shared/interfaces';
+import { IUser, IFoodItem, ILocationGeocode, IOrder, IOffer } from '../../shared/interfaces';
 
 export const updateLocation = (location: ILocationGeocode): AppThunkAction => async (dispatch) => {
   try {
@@ -231,6 +231,20 @@ export const logout = (): AppThunkAction => async (dispatch) => {
   try {
     dispatch({
       type: ActionType.LOGOUT,
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};
+
+export const addOffer = (offer: IOffer): AppThunkAction => async (dispatch) => {
+  try {
+    dispatch({
+      type: ActionType.ADD_OFFER,
+      payload: offer
     });
   } catch (error) {
     dispatch({
