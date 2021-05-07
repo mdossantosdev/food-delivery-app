@@ -13,7 +13,7 @@ import { showAlert } from '../../utils/alert';
 export const Offers: FC = () => {
   const dispatch = useAppDispatch();
   const { offers } = useAppSelector((state) => state.shop);
-  const { cart, location: { postalCode } } = useAppSelector((state) => state.user);
+  const { cart, offer, location: { postalCode } } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getOffers(postalCode || '75001'));
@@ -38,7 +38,7 @@ export const Offers: FC = () => {
 
     dispatch(addOffer(offer));
 
-    showAlert(
+    return showAlert(
       'Offer applied',
       `Offer applied with discount of ${offer.offerPercentage}%`
     );
@@ -46,6 +46,10 @@ export const Offers: FC = () => {
 
   const onPressRemoveOffer = (offer: IOffer) => {
     dispatch(removeOffer(offer));
+  }
+
+  const checkIfExist = (offerApplied: IOffer) => {
+    return offer._id !== undefined ? String(offerApplied._id) === String(offer._id) : false;
   }
 
   return (
@@ -63,7 +67,7 @@ export const Offers: FC = () => {
               item={item}
               onPressApply={onPressAddOffer}
               onPressRemove={onPressRemoveOffer}
-              isApplied={false}
+              isApplied={checkIfExist(item)}
             />
           }
         />
