@@ -6,6 +6,8 @@ import { styles } from './styles';
 import { OfferCard } from '../../components/OfferCard';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { getOffers } from '../../redux/shop/actions';
+import { removeOffer } from '../../redux/user/actions';
+import { IOffer } from '../../shared/interfaces';
 
 export const Offers: FC = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +17,10 @@ export const Offers: FC = () => {
   useEffect(() => {
     dispatch(getOffers(postalCode || '75001'));
   }, []);
+
+  const onPressRemoveOffer = (offer: IOffer) => {
+    dispatch(removeOffer(offer));
+  }
 
   return (
     <View style={styles.container}>
@@ -30,7 +36,7 @@ export const Offers: FC = () => {
             <OfferCard
               item={item}
               onPressApply={() => {}}
-              onPressRemove={() => {}}
+              onPressRemove={onPressRemoveOffer}
               isApplied={false}
             />
           }
