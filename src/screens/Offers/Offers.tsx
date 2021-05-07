@@ -6,17 +6,32 @@ import { styles } from './styles';
 import { OfferCard } from '../../components/OfferCard';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { getOffers } from '../../redux/shop/actions';
-import { removeOffer } from '../../redux/user/actions';
+import { addOffer, removeOffer } from '../../redux/user/actions';
 import { IOffer } from '../../shared/interfaces';
 
 export const Offers: FC = () => {
   const dispatch = useAppDispatch();
   const { offers } = useAppSelector((state) => state.shop);
-  const { location: { postalCode } } = useAppSelector((state) => state.user);
+  const { cart, location: { postalCode } } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getOffers(postalCode || '75001'));
   }, []);
+
+  const onPressAddOffer = (offer: IOffer) => {
+    let total = 0;
+
+    cart.map((food) => {
+      total += food.price * food.quantity;
+    })
+
+    const taxAmount = (total / 100 * 0.9) + 3;
+    const orderAmount = taxAmount + total;
+
+    if (orderAmount >= offer.minValue) {
+      dispatch(addOffer(offer));
+    }
+  }
 
   const onPressRemoveOffer = (offer: IOffer) => {
     dispatch(removeOffer(offer));
@@ -35,7 +50,7 @@ export const Offers: FC = () => {
           renderItem={({ item }) =>
             <OfferCard
               item={item}
-              onPressApply={() => {}}
+              onPressApply={onPressAddOffer}
               onPressRemove={onPressRemoveOffer}
               isApplied={false}
             />
