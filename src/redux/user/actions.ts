@@ -253,3 +253,17 @@ export const addOffer = (offer: IOffer): AppThunkAction => async (dispatch) => {
     });
   }
 };
+
+export const removeOffer = (offer: IOffer): AppThunkAction => async (dispatch) => {
+  try {
+    dispatch({
+      type: ActionType.REMOVE_OFFER,
+      payload: offer
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.USER_ERROR,
+      payload: error
+    });
+  }
+};

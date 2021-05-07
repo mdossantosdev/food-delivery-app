@@ -50,6 +50,11 @@ interface AddOfferAction {
   payload: IOffer;
 }
 
+interface RemoveOfferAction {
+  type: typeof ActionType.REMOVE_OFFER;
+  payload: IOffer;
+}
+
 interface UserErrorAction {
   type: typeof ActionType.USER_ERROR;
   payload: any;
@@ -66,4 +71,5 @@ export type UserAction =
   | CancelOrderAction
   | LogoutAction
   | AddOfferAction
+  | RemoveOfferAction
   | UserErrorAction;

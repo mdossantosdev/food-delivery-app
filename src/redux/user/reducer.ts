@@ -91,6 +91,11 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
         ...state,
         offer: action.payload,
       };
+    case ActionType.REMOVE_OFFER:
+      return {
+        ...state,
+        offer: {} as IOffer,
+      };
     case ActionType.USER_ERROR:
       return {
         ...state,
