@@ -11,8 +11,9 @@ import { FoodCard } from '../../components/FoodCard';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { BottomSheetPayment } from '../../components/BottomSheetPayment';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
-import { createOrder } from '../../redux/user/actions';
+import { createOrder, removeOffer } from '../../redux/user/actions';
 import { Routes } from '../../navigation/routes';
+import { showAlert } from '../../utils/alert';
 
 export const Cart: FC = () => {
   const navigation = useNavigation<CartNavigationProp>();
@@ -20,6 +21,9 @@ export const Cart: FC = () => {
   const { cart, user, offer, location } = useAppSelector((state) => state.user);
 
   const [totalAmount, setTotalAmount] = useState(0);
+  const [totalTax, setTotalTax] = useState(0);
+  const [payableAmount, setPayableAmount] = useState(0);
+  const [discount, setDiscount] = useState(0);
 
   const popupRef = createRef<PaymentTypePopup>();
 
@@ -29,10 +33,33 @@ export const Cart: FC = () => {
 
   const calculateAmount = () => {
     let total = 0;
+
     cart.map((item) => {
       total += item.price * item.quantity;
     })
+
+    const tax = (total / 100 * 0.9) + 3;
+
+    if (total > 0) setTotalTax(tax);
+
     setTotalAmount(total);
+    setPayableAmount(total + tax);
+    setDiscount(0);
+
+    if (offer._id !== undefined) {
+      if (total < offer.minValue) {
+        return showAlert(
+          'The applied offer is not applicable',
+          `This offer is applicable with minimum $${offer.minValue} only! Please select another offer`,
+          dispatch(removeOffer(offer))
+        );
+      }
+
+      const discount = total / 100 * offer.offerPercentage;
+      setDiscount(discount);
+      const  afterDiscount = total - discount;
+      setPayableAmount(afterDiscount);
+    }
   }
 
   const validateOrder = () => {
