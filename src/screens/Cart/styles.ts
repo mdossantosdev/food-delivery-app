@@ -50,4 +50,41 @@ export const styles = StyleSheet.create({
     fontSize: 34,
     color: 'rgb(41, 143, 163)',
   },
+  footerContainer: {
+    flex: 1,
+  },
+  footerContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 80,
+    padding: 10,
+    marginHorizontal: 10,
+    marginVertical: 15,
+    borderWidth: 1,
+    borderColor: 'rgb(234, 234, 234)',
+    borderRadius: 10,
+    shadowColor: 'rgb(23, 23, 23)',
+    shadowOffset: {
+      width: 1,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    backgroundColor: 'rgb(234, 234, 234)',
+  },
+  offerTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 5,
+  },
+  offerText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: 'rgb(41, 143, 163)',
+  },
+  offerIcon: {
+    fontSize: 40,
+    color: 'rgb(143, 143, 143)',
+  },
 });

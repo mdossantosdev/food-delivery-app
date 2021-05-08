@@ -17,7 +17,7 @@ import { Routes } from '../../navigation/routes';
 export const Cart: FC = () => {
   const navigation = useNavigation<CartNavigationProp>();
   const dispatch = useAppDispatch();
-  const { cart, user, location } = useAppSelector((state) => state.user);
+  const { cart, user, offer, location } = useAppSelector((state) => state.user);
 
   const [totalAmount, setTotalAmount] = useState(0);
 
@@ -46,6 +46,28 @@ export const Cart: FC = () => {
   const placeOrder = () => {
     dispatch(createOrder(cart, user));
     popupRef.current?.close();
+  }
+
+  const footerView = () => {
+    return (
+      <View style={styles.footerContainer}>
+        <TouchableOpacity style={styles.footerContent} onPress={() => {}}>
+          <View>
+            <Text style={styles.offerTitle}>Offers & Deals</Text>
+            {offer._id !== undefined ?
+              <View>
+                <Text style={styles.offerText}>{offer.offerPercentage} % of discount</Text>
+              </View>
+            :
+              <View>
+                <Text>You can apply available offers.</Text>
+              </View>
+            }
+          </View>
+          <Icon name='chevron-right' style={styles.offerIcon} />
+        </TouchableOpacity>
+      </View>
+    )
   }
 
   const popupView =  () => {
@@ -115,6 +137,7 @@ export const Cart: FC = () => {
               onPress={() => {}}
             />
           }
+          ListFooterComponent={footerView}
         />
       </View>
       <View style={styles.amountContainer}>
@@ -122,10 +145,7 @@ export const Cart: FC = () => {
           <Text style={styles.totalText}>Total</Text>
           <Text style={styles.totalText}>${totalAmount}</Text>
         </View>
-        <ButtonWithTitle
-          title={'Order Now'}
-          onPress={validateOrder}
-        />
+        <ButtonWithTitle title={'Order Now'} onPress={validateOrder} />
       </View>
       {popupView()}
     </View>
