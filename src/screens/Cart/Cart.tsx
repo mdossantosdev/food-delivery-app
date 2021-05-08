@@ -51,7 +51,10 @@ export const Cart: FC = () => {
   const footerView = () => {
     return (
       <View style={styles.footerContainer}>
-        <TouchableOpacity style={styles.footerContent} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.footerContent}
+          onPress={() => navigation.navigate(Routes.Offers)}
+        >
           <View>
             <Text style={styles.offerTitle}>Offers & Deals</Text>
             {offer._id !== undefined ?
