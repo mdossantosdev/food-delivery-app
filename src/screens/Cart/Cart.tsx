@@ -20,34 +20,33 @@ export const Cart: FC = () => {
   const dispatch = useAppDispatch();
   const { cart, user, offer, location } = useAppSelector((state) => state.user);
 
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [totalTax, setTotalTax] = useState(0);
-  const [payableAmount, setPayableAmount] = useState(0);
+  const [subTotal, setSubTotal] = useState(0);
+  const [serviceFee, setServiceFee] = useState(0);
+  const [deliveryFee, setDeliveryFee] = useState(3);
   const [discount, setDiscount] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const popupRef = createRef<PaymentTypePopup>();
 
   useEffect(() => {
-    calculateAmount();
+    calculateTotal();
   }, [cart, offer]);
 
-  const calculateAmount = () => {
-    let total = 0;
+  const calculateTotal = () => {
+    let subTotal = 0;
 
-    cart.map((item) => {
-      total += item.price * item.quantity;
-    })
+    cart.map((item) => subTotal += item.price * item.quantity);
 
-    const tax = (total / 100 * 0.9) + 3;
+    const serviceFee = subTotal / 100 * 10;
 
-    if (total > 0) setTotalTax(tax);
+    if (subTotal > 0) setServiceFee(serviceFee);
 
-    setTotalAmount(total);
-    setPayableAmount(total + tax);
+    setSubTotal(subTotal);
+    setTotal(subTotal + serviceFee + deliveryFee);
     setDiscount(0);
 
     if (offer._id !== undefined) {
-      if (total < offer.minValue) {
+      if (subTotal < offer.minValue) {
         return showAlert(
           'The applied offer is not applicable',
           `This offer is applicable with minimum $${offer.minValue} only! Please select another offer`,
@@ -55,19 +54,18 @@ export const Cart: FC = () => {
         );
       }
 
-      const discount = total / 100 * offer.offerPercentage;
+      const discount = subTotal / 100 * offer.offerPercentage;
       setDiscount(discount);
-      const  afterDiscount = total - discount;
-      setPayableAmount(afterDiscount);
+
+      const afterDiscount = subTotal - discount;
+      setTotal(afterDiscount + serviceFee + deliveryFee);
     }
 
-    setTotalAmount(total);
+    setSubTotal(subTotal);
   }
 
   const validateOrder = () => {
-    if (!user || !user.verified) {
-      return navigation.navigate(Routes.Login);
-    }
+    if (!user || !user.verified) return navigation.navigate(Routes.Login);
 
     popupRef.current?.open();
   }
@@ -88,7 +86,7 @@ export const Cart: FC = () => {
             <Text style={styles.footerTitle}>Offers & Deals</Text>
             {offer._id !== undefined ?
               <View>
-                <Text style={styles.offerText}>{offer.offerPercentage} % of discount</Text>
+                <Text style={styles.offerText}>{offer.offerPercentage}% of discount</Text>
               </View>
             :
               <View>
@@ -103,21 +101,25 @@ export const Cart: FC = () => {
             <Text style={styles.footerTitle}>Receipt</Text>
             <View style={styles.receiptRow}>
               <Text style={styles.receiptTitle}>Subtotal</Text>
-              <Text style={styles.receiptText}>${totalAmount.toFixed(2)}</Text>
+              <Text style={styles.receiptText}>${subTotal.toFixed(2)}</Text>
             </View>
             <View style={styles.receiptRow}>
-              <Text style={styles.receiptTitle}>Tax & Delivery Fee</Text>
-              <Text style={styles.receiptText}>${totalTax.toFixed(2)}</Text>
+              <Text style={styles.receiptTitle}>Service Fee</Text>
+              <Text style={styles.receiptText}>${serviceFee.toFixed(2)}</Text>
+            </View>
+            <View style={styles.receiptRow}>
+              <Text style={styles.receiptTitle}>Delivery Fee</Text>
+              <Text style={styles.receiptText}>${deliveryFee.toFixed(2)}</Text>
             </View>
             {offer._id !== undefined &&
               <View style={styles.receiptRow}>
-                <Text style={styles.receiptTitle}>Discount</Text>
-                <Text style={styles.receiptText}>${discount.toFixed(2)}</Text>
+                <Text style={styles.receiptTitle}>Discount ({offer.offerPercentage}% offer)</Text>
+                <Text style={styles.receiptText}>-${discount.toFixed(2)}</Text>
               </View>
             }
             <View style={styles.receiptRow}>
               <Text style={styles.receiptTitle}>Total</Text>
-              <Text style={styles.receiptText}>${payableAmount.toFixed(2)}</Text>
+              <Text style={styles.receiptText}>${total.toFixed(2)}</Text>
             </View>
         </View>
       </View>
@@ -143,7 +145,7 @@ export const Cart: FC = () => {
         customStyles={customStyles}
       >
         <BottomSheetPayment
-          amount={totalAmount}
+          amount={total}
           location={location}
           placeOrder={placeOrder}
         />
@@ -197,7 +199,7 @@ export const Cart: FC = () => {
       <View style={styles.amountContainer}>
         <View style={styles.amountInnerContainer}>
           <Text style={styles.totalText}>Total</Text>
-          <Text style={styles.totalText}>${totalAmount}</Text>
+          <Text style={styles.totalText}>${total}</Text>
         </View>
         <ButtonWithTitle title={'Order Now'} onPress={validateOrder} />
       </View>
