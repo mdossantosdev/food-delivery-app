@@ -29,7 +29,7 @@ export const Cart: FC = () => {
 
   useEffect(() => {
     calculateAmount();
-  }, [cart]);
+  }, [cart, offer]);
 
   const calculateAmount = () => {
     let total = 0;
@@ -60,6 +60,8 @@ export const Cart: FC = () => {
       const  afterDiscount = total - discount;
       setPayableAmount(afterDiscount);
     }
+
+    setTotalAmount(total);
   }
 
   const validateOrder = () => {
@@ -79,11 +81,11 @@ export const Cart: FC = () => {
     return (
       <View style={styles.footerContainer}>
         <TouchableOpacity
-          style={styles.footerContent}
+          style={styles.offerContainer}
           onPress={() => navigation.navigate(Routes.Offers)}
         >
           <View>
-            <Text style={styles.offerTitle}>Offers & Deals</Text>
+            <Text style={styles.footerTitle}>Offers & Deals</Text>
             {offer._id !== undefined ?
               <View>
                 <Text style={styles.offerText}>{offer.offerPercentage} % of discount</Text>
@@ -96,6 +98,28 @@ export const Cart: FC = () => {
           </View>
           <Icon name='chevron-right' style={styles.offerIcon} />
         </TouchableOpacity>
+
+        <View style={styles.receiptContainer}>
+            <Text style={styles.footerTitle}>Receipt</Text>
+            <View style={styles.receiptRow}>
+              <Text style={styles.receiptTitle}>Subtotal</Text>
+              <Text style={styles.receiptText}>${totalAmount.toFixed(2)}</Text>
+            </View>
+            <View style={styles.receiptRow}>
+              <Text style={styles.receiptTitle}>Tax & Delivery Fee</Text>
+              <Text style={styles.receiptText}>${totalTax.toFixed(2)}</Text>
+            </View>
+            {offer._id !== undefined &&
+              <View style={styles.receiptRow}>
+                <Text style={styles.receiptTitle}>Discount</Text>
+                <Text style={styles.receiptText}>${discount.toFixed(2)}</Text>
+              </View>
+            }
+            <View style={styles.receiptRow}>
+              <Text style={styles.receiptTitle}>Total</Text>
+              <Text style={styles.receiptText}>${payableAmount.toFixed(2)}</Text>
+            </View>
+        </View>
       </View>
     )
   }

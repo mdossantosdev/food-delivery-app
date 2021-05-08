@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
   footerContainer: {
     flex: 1,
   },
-  footerContent: {
+  offerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -73,7 +73,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 2,
     backgroundColor: 'rgb(234, 234, 234)',
   },
-  offerTitle: {
+  footerTitle: {
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 5,
@@ -86,5 +86,39 @@ export const styles = StyleSheet.create({
   offerIcon: {
     fontSize: 40,
     color: 'rgb(143, 143, 143)',
+  },
+  receiptContainer: {
+    flex: 1,
+    justifyContent: 'space-around',
+    height: 250,
+    padding: 10,
+    marginHorizontal: 10,
+    marginVertical: 15,
+    borderWidth: 1,
+    borderColor: 'rgb(234, 234, 234)',
+    borderRadius: 10,
+    shadowColor: 'rgb(23, 23, 23)',
+    shadowOffset: {
+      width: 1,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    backgroundColor: 'rgb(234, 234, 234)',
+  },
+  receiptRow: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    paddingHorizontal: 10,
+  },
+  receiptTitle: {
+    fontSize: 14,
+  },
+  receiptText: {
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
