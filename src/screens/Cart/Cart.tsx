@@ -73,6 +73,7 @@ export const Cart: FC = () => {
   const placeOrder = () => {
     dispatch(createOrder(cart, user));
     popupRef.current?.close();
+    dispatch(removeOffer(offer));
   }
 
   const footerView = () => {
