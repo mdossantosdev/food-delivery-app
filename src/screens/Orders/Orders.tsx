@@ -6,9 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { OrderNavigationProp } from './types';
 import { BackButton } from '../../components/BackButton';
+import { OrderCard } from '../../components/OrderCard';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { getOrders } from '../../redux/user/actions';
-import { OrderCard } from '../../components/OrderCard';
 import { Routes } from '../../navigation/routes';
 
 export const Orders: FC = () => {

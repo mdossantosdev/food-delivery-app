@@ -73,13 +73,13 @@ export const Home: FC = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             data={restaurants}
+            keyExtractor={(item) => `${item._id}`}
             renderItem={({ item }) =>
               <RestaurantCard
                 item={item}
                 onPress={() => navigation.navigate(Routes.Restaurant, { restaurant: item })}
               />
             }
-            keyExtractor={(item) => `${item._id}`}
           />
           <View>
             <Text style={styles.title}>30 Minutes Foods</Text>
@@ -88,13 +88,13 @@ export const Home: FC = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             data={foods}
+            keyExtractor={(item) => `${item._id}`}
             renderItem={({ item }) =>
               <RestaurantCard
                 item={item}
                 onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
               />
             }
-            keyExtractor={(item) => `${item._id}`}
           />
         </ScrollView>
       </View>

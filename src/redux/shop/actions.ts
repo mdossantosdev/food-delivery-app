@@ -4,9 +4,9 @@ import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
 import { IOffer } from '../../shared/interfaces';
 
-export const availabilityByPostCode = (postCode: string): AppThunkAction => async (dispatch) => {
+export const availabilityByPostCode = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get(`${BASE_URL}/food/availability/${postCode}`);
+    const response = await axios.get(`${BASE_URL}/food/availability/${postalCode}`);
 
     if (!response) {
       dispatch({
@@ -27,9 +27,9 @@ export const availabilityByPostCode = (postCode: string): AppThunkAction => asyn
   }
 };
 
-export const foodSearchByPostCode = (postCode: string): AppThunkAction => async (dispatch) => {
+export const foodSearchByPostCode = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get(`${BASE_URL}/food/search/${postCode}`);
+    const response = await axios.get(`${BASE_URL}/food/search/${postalCode}`);
 
     if (!response) {
       dispatch({
@@ -50,9 +50,9 @@ export const foodSearchByPostCode = (postCode: string): AppThunkAction => async 
   }
 };
 
-export const getOffers = (zipCode: string): AppThunkAction => async (dispatch) => {
+export const getOffers = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get<IOffer[]>(`${BASE_URL}/offers/${zipCode}`);
+    const response = await axios.get<IOffer[]>(`${BASE_URL}/offers/${postalCode}`);
 
     if (!response) {
       dispatch({

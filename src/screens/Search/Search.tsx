@@ -39,13 +39,13 @@ export const Search: FC = () => {
         <FlatList
           showsVerticalScrollIndicator={false}
           data={foods}
+          keyExtractor={(item) => `${item._id}`}
           renderItem={({item}) =>
             <FoodCard
               item={checkExistence(item, cart)}
               onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
             />
           }
-          keyExtractor={(item) => `${item._id}`}
         />
       </View>
     </View>
