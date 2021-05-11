@@ -27,7 +27,7 @@ export const availabilityByPostCode = (postalCode: string): AppThunkAction => as
   }
 };
 
-export const foodSearchByPostCode = (postalCode: string): AppThunkAction => async (dispatch) => {
+export const foodSearch = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
     const response = await axios.get(`${BASE_URL}/food/search/${postalCode}`);
 

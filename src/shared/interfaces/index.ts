@@ -75,7 +75,7 @@ export interface IOffer {
   promoType: string;
   bank: any[];
   bin: any[];
-  zipCode: string;
+  postalCode: string;
 }
 
 export interface IFoodAvailability {
