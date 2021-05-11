@@ -88,6 +88,7 @@ export interface IShopState {
   availability: IFoodAvailability;
   availableFoods: IFoodItem[];
   offers: IOffer[];
+  topRestaurants: IRestaurant[];
   error: string | undefined;
 }
 

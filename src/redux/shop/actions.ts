@@ -27,6 +27,29 @@ export const availabilityByPostCode = (postalCode: string): AppThunkAction => as
   }
 };
 
+export const getTopRestaurants = (postalCode: string): AppThunkAction => async (dispatch) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/top-restaurants/${postalCode}`);
+
+    if (!response) {
+      dispatch({
+        type: ActionType.SHOP_ERROR,
+        payload: 'Availability error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.TOP_RESTAURANTS,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.SHOP_ERROR,
+      payload: error
+    });
+  }
+};
+
 export const foodSearch = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
     const response = await axios.get(`${BASE_URL}/food/search/${postalCode}`);

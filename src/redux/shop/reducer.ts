@@ -1,11 +1,12 @@
 import { ActionType } from './actionTypes';
 import { ShopAction } from './types';
-import { IFoodAvailability, IShopState, IOffer } from '../../shared/interfaces';
+import { IFoodAvailability, IShopState, IOffer, IRestaurant } from '../../shared/interfaces';
 
 const initialState: IShopState = {
   availability: {} as IFoodAvailability,
   availableFoods: [],
   offers: [] as IOffer[],
+  topRestaurants: [] as IRestaurant[],
   error: undefined,
 }
 
@@ -25,6 +26,11 @@ export const shopReducer = (state = initialState, action: ShopAction) => {
       return {
         ...state,
         offers: action.payload,
+      };
+    case ActionType.TOP_RESTAURANTS:
+      return {
+        ...state,
+        topRestaurants: action.payload,
       };
     case ActionType.SHOP_ERROR:
       return {
