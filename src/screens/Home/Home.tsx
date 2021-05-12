@@ -6,12 +6,17 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { HomeNavigationProp } from './types';
+import { Routes } from '../../navigation/routes';
 import { SearchBar } from '../../components/SearchBar';
 import { CategoryCard } from '../../components/CategoryCard';
 import { RestaurantCard } from '../../components/RestaurantCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { availabilityByPostCode, foodSearch, getTopRestaurants } from '../../redux/shop/actions';
-import { Routes } from '../../navigation/routes';
+import {
+  availabilityByPostCode,
+  foodSearch,
+  getTopRestaurants,
+  getFoodsIn30Min
+} from '../../redux/shop/actions';
 
 export const Home: FC = () => {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -22,13 +27,15 @@ export const Home: FC = () => {
   } = useAppSelector((state) => state.user);
 
   const {
-    availability: { categories, foods },
-    topRestaurants
+    availability: { categories },
+    topRestaurants,
+    foods30Min
   } = useAppSelector((state) => state.shop);
 
   useEffect(() => {
     dispatch(availabilityByPostCode(postalCode || '75001'));
     dispatch(getTopRestaurants(postalCode || '75001'));
+    dispatch(getFoodsIn30Min(postalCode || '75001'));
 
     setTimeout(() => {
       dispatch(foodSearch(postalCode || '75001'));
@@ -89,7 +96,7 @@ export const Home: FC = () => {
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={foods}
+            data={foods30Min}
             keyExtractor={(item) => `${item._id}`}
             renderItem={({ item }) =>
               <RestaurantCard
