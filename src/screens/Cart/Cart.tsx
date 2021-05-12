@@ -7,12 +7,12 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { CartNavigationProp } from './types';
+import { Routes } from '../../navigation/routes';
 import { FoodCard } from '../../components/FoodCard';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { BottomSheetPayment } from '../../components/BottomSheetPayment';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { createOrder, removeOffer } from '../../redux/user/actions';
-import { Routes } from '../../navigation/routes';
 import { showAlert } from '../../utils/alert';
 
 export const Cart: FC = () => {

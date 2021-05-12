@@ -5,9 +5,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { styles } from './styles';
 import { RestaurantNavigationProp, RestaurantRouteProp } from './types';
+import { Routes } from '../../navigation/routes';
 import { BackButton } from '../../components/BackButton';
 import { FoodCard } from '../../components/FoodCard';
-import { Routes } from '../../navigation/routes';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { checkExistence } from '../../utils/cart';
 

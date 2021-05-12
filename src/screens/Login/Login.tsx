@@ -12,12 +12,12 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
+import { Routes } from '../../navigation/routes';
 import { TextInput } from '../../components/TextInput';
 import { ButtonWithTitle } from '../../components/ButtonWithTitle';
 import { ButtonLink } from '../../components/ButtonLink';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { login, register, verifyOtp, otpRequest } from '../../redux/user/actions';
-import { Routes } from '../../navigation/routes';
 
 export const Login: FC = () => {
   const navigation = useNavigation();

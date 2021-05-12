@@ -1,13 +1,13 @@
 import { ActionType } from './actionTypes';
 import { ShopAction } from './types';
-import { IFoodAvailability, IShopState, IOffer, IRestaurant, IFoodItem } from '../../shared/interfaces';
+import { IFoodAvailability, IShopState } from '../../shared/interfaces';
 
 const initialState: IShopState = {
   availability: {} as IFoodAvailability,
   availableFoods: [],
-  topRestaurants: [] as IRestaurant[],
-  foods30Min: [] as IFoodItem[],
-  offers: [] as IOffer[],
+  topRestaurants: [],
+  foods30Min: [],
+  offers: [],
   error: undefined,
 }
 

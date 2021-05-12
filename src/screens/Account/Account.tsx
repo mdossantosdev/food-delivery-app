@@ -7,10 +7,10 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 import { styles } from './styles';
 import { AccountNavigationProp } from './types';
 import { Login } from '../Login';
+import { Routes } from '../../navigation/routes';
 import { RedButton } from '../../components/RedButton';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { logout } from '../../redux/user/actions';
-import { Routes } from '../../navigation/routes';
 
 export const Account: FC = () => {
   const navigation = useNavigation<AccountNavigationProp>();
@@ -53,7 +53,7 @@ export const Account: FC = () => {
       </View>
       <View style={styles.contentContainer}>
         <ScrollView>
-          { options.map(({ title, action }) => optionCard(title, action)) }
+          {options.map(({ title, action }) => optionCard(title, action))}
         </ScrollView>
         <RedButton title='Logout' onPress={() => dispatch(logout())} />
       </View>

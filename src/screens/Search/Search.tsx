@@ -5,10 +5,10 @@ import { FlatList } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { SearchScreenProps } from './types';
+import { Routes } from '../../navigation/routes';
 import { BackButton } from '../../components/BackButton';
 import { SearchBar } from '../../components/SearchBar';
 import { FoodCard } from '../../components/FoodCard';
-import { Routes } from '../../navigation/routes';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { checkExistence } from '../../utils/cart';
 

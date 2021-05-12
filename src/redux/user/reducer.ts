@@ -1,19 +1,12 @@
 import { ActionType } from './actionTypes';
 import { UserAction } from './types';
-import {
-  IUser,
-  IUserState,
-  ILocationGeocode,
-  IOrder,
-  IFoodItem,
-  IOffer
-} from '../../shared/interfaces';
+import { IUser, IUserState, ILocationGeocode, IOffer } from '../../shared/interfaces';
 
 const initialState: IUserState = {
   user: {} as IUser,
   location: {} as ILocationGeocode,
-  cart: [] as IFoodItem[],
-  orders: [] as IOrder[],
+  cart: [],
+  orders: [],
   offer: {} as IOffer,
   error: undefined,
 }
