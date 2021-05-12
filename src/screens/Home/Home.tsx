@@ -10,7 +10,7 @@ import { SearchBar } from '../../components/SearchBar';
 import { CategoryCard } from '../../components/CategoryCard';
 import { RestaurantCard } from '../../components/RestaurantCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { availabilityByPostCode, foodSearch } from '../../redux/shop/actions';
+import { availabilityByPostCode, foodSearch, getTopRestaurants } from '../../redux/shop/actions';
 import { Routes } from '../../navigation/routes';
 
 export const Home: FC = () => {
@@ -22,11 +22,13 @@ export const Home: FC = () => {
   } = useAppSelector((state) => state.user);
 
   const {
-    availability: { categories, restaurants, foods }
+    availability: { categories, foods },
+    topRestaurants
   } = useAppSelector((state) => state.shop);
 
   useEffect(() => {
     dispatch(availabilityByPostCode(postalCode || '75001'));
+    dispatch(getTopRestaurants(postalCode || '75001'));
 
     setTimeout(() => {
       dispatch(foodSearch(postalCode || '75001'));
@@ -72,7 +74,7 @@ export const Home: FC = () => {
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={restaurants}
+            data={topRestaurants}
             keyExtractor={(item) => `${item._id}`}
             renderItem={({ item }) =>
               <RestaurantCard
