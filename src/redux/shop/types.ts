@@ -21,6 +21,11 @@ interface TopRestaurantsAction {
   payload: IRestaurant[];
 }
 
+interface Foods30MinAction {
+  type: typeof ActionType.FOODS_30MIN;
+  payload: IFoodItem[];
+}
+
 interface ShopErrorAction {
   type: typeof ActionType.SHOP_ERROR;
   payload: any;
@@ -31,4 +36,5 @@ export type ShopAction =
   | FoodSearchAction
   | OfferSearchAction
   | TopRestaurantsAction
+  | Foods30MinAction
   | ShopErrorAction;

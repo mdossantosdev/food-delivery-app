@@ -29,7 +29,7 @@ export const availabilityByPostCode = (postalCode: string): AppThunkAction => as
 
 export const getTopRestaurants = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get(`${BASE_URL}/top-restaurants/${postalCode}`);
+    const response = await axios.get(`${BASE_URL}/shop/top-restaurants/${postalCode}`);
 
     if (!response) {
       dispatch({
@@ -40,6 +40,29 @@ export const getTopRestaurants = (postalCode: string): AppThunkAction => async (
 
     dispatch({
       type: ActionType.TOP_RESTAURANTS,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.SHOP_ERROR,
+      payload: error
+    });
+  }
+};
+
+export const getFoodsIn30Min = (postalCode: string): AppThunkAction => async (dispatch) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/shop/foods30min/${postalCode}`);
+
+    if (!response) {
+      dispatch({
+        type: ActionType.SHOP_ERROR,
+        payload: 'Availability error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.FOODS_30MIN,
       payload: response.data
     });
   } catch (error) {
