@@ -75,7 +75,7 @@ export const getFoodsIn30Min = (postalCode: string): AppThunkAction => async (di
 
 export const foodSearch = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get(`${BASE_URL}/food/search/${postalCode}`);
+    const response = await axios.get(`${BASE_URL}/shop/search/${postalCode}`);
 
     if (!response) {
       dispatch({
