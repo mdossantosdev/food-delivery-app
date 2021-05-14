@@ -41,7 +41,7 @@ export const Account: FC = () => {
     )
   }
 
-  if (!user.token) return <Login />;
+  if (!user || !user.verified) return <Login />;
 
   return (
     <View style={styles.container}>

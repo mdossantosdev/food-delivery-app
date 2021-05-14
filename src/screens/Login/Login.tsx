@@ -38,12 +38,10 @@ export const Login: FC = () => {
 
   useEffect(() => {
     if (user.token !== undefined) {
-      if (user.verified) {
-        navigation.navigate(Routes.Cart);
-      } else {
-        setVerified(user.verified);
-        enableOtpRequest();
-      }
+      if (user.verified) return navigation.navigate(Routes.Cart);
+
+      setVerified(user.verified);
+      enableOtpRequest();
     }
 
     return () => clearInterval(countDown);
