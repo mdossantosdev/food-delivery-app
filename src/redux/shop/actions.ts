@@ -98,7 +98,7 @@ export const foodSearch = (postalCode: string): AppThunkAction => async (dispatc
 
 export const getOffers = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get<IOffer[]>(`${BASE_URL}/offers/${postalCode}`);
+    const response = await axios.get<IOffer[]>(`${BASE_URL}/shop/offers/${postalCode}`);
 
     if (!response) {
       dispatch({
