@@ -118,3 +118,26 @@ export const getOffers = (postalCode: string): AppThunkAction => async (dispatch
     });
   }
 };
+
+export const getCategories = (): AppThunkAction => async (dispatch) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/shop/categories`);
+
+    if (!response) {
+      dispatch({
+        type: ActionType.SHOP_ERROR,
+        payload: 'Offer availability error'
+      });
+    }
+
+    dispatch({
+      type: ActionType.CATEGORIES,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.SHOP_ERROR,
+      payload: error
+    });
+  }
+};

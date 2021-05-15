@@ -21,6 +21,12 @@ export interface ICategory {
   icon: string;
 }
 
+export interface ICategories {
+  categoryId: number;
+  title: string;
+  images: string;
+}
+
 export interface IFoodItem {
   _id: string;
   name: string;

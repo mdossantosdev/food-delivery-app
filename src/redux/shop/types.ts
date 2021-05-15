@@ -1,5 +1,5 @@
 import { ActionType } from './actionTypes';
-import { IFoodAvailability, IFoodItem, IOffer, IRestaurant } from '../../shared/interfaces';
+import { IFoodAvailability, IFoodItem, IOffer, IRestaurant, ICategories } from '../../shared/interfaces';
 
 interface AvailabilityAction {
   type: typeof ActionType.AVAILABILITY;
@@ -26,6 +26,11 @@ interface Foods30MinAction {
   payload: IFoodItem[];
 }
 
+interface CategoriesAction {
+  type: typeof ActionType.CATEGORIES;
+  payload: ICategories;
+}
+
 interface ShopErrorAction {
   type: typeof ActionType.SHOP_ERROR;
   payload: any;
@@ -37,4 +42,5 @@ export type ShopAction =
   | OfferSearchAction
   | TopRestaurantsAction
   | Foods30MinAction
+  | CategoriesAction
   | ShopErrorAction;
