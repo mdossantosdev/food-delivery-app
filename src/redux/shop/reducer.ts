@@ -3,6 +3,7 @@ import { ShopAction } from './types';
 import { IShopState } from '../../shared/interfaces';
 
 const initialState: IShopState = {
+  categories: [],
   availableFoods: [],
   topRestaurants: [],
   foods30Min: [],
@@ -12,6 +13,11 @@ const initialState: IShopState = {
 
 export const shopReducer = (state = initialState, action: ShopAction) => {
   switch (action.type) {
+    case ActionType.CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
     case ActionType.FOOD_SEARCH:
       return {
         ...state,

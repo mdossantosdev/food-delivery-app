@@ -15,7 +15,7 @@ export interface IUserState {
   error: string | undefined;
 }
 
-export interface ICategories {
+export interface ICategory {
   categoryId: number;
   title: string;
   images: string;
@@ -79,6 +79,7 @@ export interface IOffer {
 }
 
 export interface IShopState {
+  categories: ICategory[];
   availableFoods: IFoodItem[];
   topRestaurants: IRestaurant[];
   foods30Min: IFoodItem[];

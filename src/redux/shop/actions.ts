@@ -2,7 +2,7 @@ import axios from 'axios';
 import { BASE_URL } from 'react-native-dotenv';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
-import { IOffer } from '../../shared/interfaces';
+import { IOffer, ICategory } from '../../shared/interfaces';
 
 export const getTopRestaurants = (postalCode: string): AppThunkAction => async (dispatch) => {
   try {
@@ -98,7 +98,7 @@ export const getOffers = (postalCode: string): AppThunkAction => async (dispatch
 
 export const getCategories = (): AppThunkAction => async (dispatch) => {
   try {
-    const response = await axios.get(`${BASE_URL}/shop/categories`);
+    const response = await axios.get<ICategory[]>(`${BASE_URL}/shop/categories`);
 
     if (!response) {
       dispatch({
