@@ -32,11 +32,12 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgb(234, 234, 234)',
   },
   textImageContainer: {
-    height: 100,
-    padding: 15,
+    height: 80,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   nameText: {
     fontSize: 26,
@@ -44,7 +45,7 @@ export const styles = StyleSheet.create({
     color: 'rgb(255, 255, 255)',
   },
   categoryText: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: '500',
     color: 'rgb(255, 255, 255)',
   },
