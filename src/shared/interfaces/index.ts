@@ -15,12 +15,6 @@ export interface IUserState {
   error: string | undefined;
 }
 
-export interface ICategory {
-  id: number;
-  title: string;
-  icon: string;
-}
-
 export interface ICategories {
   categoryId: number;
   title: string;
@@ -84,14 +78,7 @@ export interface IOffer {
   postalCode: string;
 }
 
-export interface IFoodAvailability {
-  categories: ICategory[];
-  restaurants: IRestaurant[];
-  foods: IFoodItem[];
-}
-
 export interface IShopState {
-  availability: IFoodAvailability;
   availableFoods: IFoodItem[];
   topRestaurants: IRestaurant[];
   foods30Min: IFoodItem[];
