@@ -12,6 +12,7 @@ import { CategoryCard } from '../../components/CategoryCard';
 import { RestaurantCard } from '../../components/RestaurantCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import {
+  getCategories,
   foodSearch,
   getTopRestaurants,
   getFoodsIn30Min
@@ -26,11 +27,13 @@ export const Home: FC = () => {
   } = useAppSelector((state) => state.user);
 
   const {
+    categories,
     topRestaurants,
     foods30Min
   } = useAppSelector((state) => state.shop);
 
   useEffect(() => {
+    dispatch(getCategories());
     dispatch(getTopRestaurants(postalCode || '75001'));
     dispatch(getFoodsIn30Min(postalCode || '75001'));
 
@@ -66,11 +69,11 @@ export const Home: FC = () => {
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={[]}
+            data={categories}
+            keyExtractor={(item) => `${item.categoryId}`}
             renderItem={({ item }) =>
               <CategoryCard item={item} onPress={() => alert(`${item.title}`)} />
             }
-            keyExtractor={(item) => `${item.id}`}
           />
           <View>
             <Text style={styles.title}>Top Restaurants</Text>

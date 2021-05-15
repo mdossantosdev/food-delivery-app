@@ -8,7 +8,7 @@ export const CategoryCard: FC<Props> = ({ item, onPress }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={() => onPress(item)}>
       <View style={styles.shadowBox}>
-        <Image source={{ uri: `${item.icon}` }} style={styles.image} />
+        <Image source={{ uri: `${item.images[0]}` }} style={styles.image} />
       </View>
       <Text style={styles.text}>{item.title}</Text>
     </TouchableOpacity>
