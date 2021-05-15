@@ -17,6 +17,7 @@ import {
   getTopRestaurants,
   getFoodsIn30Min
 } from '../../redux/shop/actions';
+import { showAlert } from '../../utils/alert';
 
 export const Home: FC = () => {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -72,7 +73,10 @@ export const Home: FC = () => {
             data={categories}
             keyExtractor={(item) => `${item.categoryId}`}
             renderItem={({ item }) =>
-              <CategoryCard item={item} onPress={() => alert(`${item.title}`)} />
+              <CategoryCard
+                item={item}
+                onPress={() => showAlert(`${item.title}`, 'Feature not implemented')}
+              />
             }
           />
           <View>
