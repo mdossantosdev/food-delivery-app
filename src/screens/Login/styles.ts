@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgb(255, 255, 255)',
   },
-  header: {
+  navigation: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

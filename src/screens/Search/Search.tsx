@@ -27,7 +27,7 @@ export const Search: FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.navigation}>
         <BackButton onPress={() => navigation.goBack()} />
         <SearchBar
           onChangeText={setKeyword}

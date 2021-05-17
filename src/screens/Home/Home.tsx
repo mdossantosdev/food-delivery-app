@@ -45,7 +45,7 @@ export const Home: FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.navigation}>
         <View style={styles.addressContainer}>
           <Image
             style={styles.deliveryIcon}

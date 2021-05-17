@@ -123,7 +123,7 @@ export const Login: FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.navigation}>
         <Text style={styles.title}>{title}</Text>
       </View>
       <KeyboardAvoidingView

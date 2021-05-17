@@ -20,7 +20,7 @@ export const Restaurant: FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.navigation}>
         <View style={styles.iconContainer}>
           <BackButton onPress={() => navigation.goBack()} />
         </View>

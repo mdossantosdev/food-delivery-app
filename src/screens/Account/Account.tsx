@@ -46,7 +46,7 @@ export const Account: FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.navigation}>
         <View style={styles.avatarContainer}>
           <Icon name='account' style={styles.avatar} />
         </View>
