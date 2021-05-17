@@ -5,6 +5,7 @@ import { FontAwesome5 as Icon } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { Props } from './types';
+import { showAlert } from '../../utils/alert';
 
 export const BottomSheetPayment: FC<Props> = ({ amount, location, placeOrder }) => {
   const { name, postalCode, city } = location;
@@ -13,7 +14,7 @@ export const BottomSheetPayment: FC<Props> = ({ amount, location, placeOrder }) 
     <View style={styles.container}>
       <View style={styles.paymentContainer}>
         <Text style={styles.paymentTitle}>Payable Amount</Text>
-        <Text style={styles.amountText}>${amount.toFixed(0)}</Text>
+        <Text style={styles.amountText}>${amount.toFixed(2)}</Text>
       </View>
       <View style={styles.addressContainer}>
         <Image
@@ -39,7 +40,10 @@ export const BottomSheetPayment: FC<Props> = ({ amount, location, placeOrder }) 
             <Icon name='credit-card' style={styles.creditCardIcon}/>
             <Text style={styles.iconText}>Card Payment</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.options} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.options}
+            onPress={() => showAlert('Bitcoin', 'Feature not implemented')}
+          >
             <Icon name='bitcoin' style={styles.btcIcon}/>
             <Text style={styles.iconText}>Bitcoin</Text>
           </TouchableOpacity>

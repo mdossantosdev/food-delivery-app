@@ -200,7 +200,7 @@ export const Cart: FC = () => {
       <View style={styles.amountContainer}>
         <View style={styles.amountInnerContainer}>
           <Text style={styles.totalText}>Total</Text>
-          <Text style={styles.totalText}>${total}</Text>
+          <Text style={styles.totalText}>${total.toFixed(2)}</Text>
         </View>
         <ButtonWithTitle title={'Order Now'} onPress={validateOrder} />
       </View>
