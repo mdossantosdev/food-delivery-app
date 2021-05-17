@@ -9,7 +9,7 @@ import { HomeNavigationProp } from './types';
 import { Routes } from '../../navigation/routes';
 import { SearchBar } from '../../components/SearchBar';
 import { CategoryCard } from '../../components/CategoryCard';
-import { RestaurantCard } from '../../components/RestaurantCard';
+import { RestaurantFoodCard } from '../../components/RestaurantFoodCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import {
   getCategories,
@@ -80,7 +80,7 @@ export const Home: FC = () => {
             }
           />
           <View>
-            <Text style={styles.title}>Top Restaurants</Text>
+            <Text style={styles.title}>Top 10 Restaurants</Text>
           </View>
           <FlatList
             horizontal
@@ -88,7 +88,7 @@ export const Home: FC = () => {
             data={topRestaurants}
             keyExtractor={(item) => `${item._id}`}
             renderItem={({ item }) =>
-              <RestaurantCard
+              <RestaurantFoodCard
                 item={item}
                 onPress={() => navigation.navigate(Routes.Restaurant, { restaurant: item })}
               />
@@ -103,7 +103,7 @@ export const Home: FC = () => {
             data={foods30Min}
             keyExtractor={(item) => `${item._id}`}
             renderItem={({ item }) =>
-              <RestaurantCard
+              <RestaurantFoodCard
                 item={item}
                 onPress={() => navigation.navigate(Routes.FoodDetails, { food: item })}
               />
