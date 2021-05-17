@@ -30,4 +30,5 @@ export type CartStackParamList = {
 export type AccountStackParamList = {
   Account: undefined;
   Orders: undefined;
+  OrderDetails : { order: IOrder };
 };
