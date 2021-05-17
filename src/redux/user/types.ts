@@ -43,6 +43,7 @@ interface CancelOrderAction {
 
 interface LogoutAction {
   type: typeof ActionType.LOGOUT;
+  payload: null;
 }
 
 interface AddOfferAction {

@@ -11,18 +11,20 @@ const initialState: IUserState = {
   error: undefined,
 }
 
-export const userReducer = (state = initialState, action: UserAction): IUserState => {
-  switch (action.type) {
+export const userReducer = (state = initialState, action: UserAction) => {
+  const { type, payload } = action;
+
+  switch (type) {
     case ActionType.UPDATE_LOCATION:
       return {
         ...state,
-        location: action.payload,
+        location: payload,
       };
     case ActionType.LOGIN:
     case ActionType.REGISTER:
       return {
         ...state,
-        user: action.payload,
+        user: payload,
       };
     case ActionType.LOGOUT:
       return {
@@ -30,7 +32,7 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
         user: {} as IUser,
       }
     case ActionType.ADD_TO_CART:
-      const existingItem = state.cart.find((item) => item._id === action.payload._id);
+      const existingItem = state.cart.find((item) => item._id === payload._id);
 
       if (existingItem) {
         return {
@@ -45,10 +47,10 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
 
       return {
         ...state,
-        cart: [...state.cart, { ...action.payload, quantity: 1 }],
+        cart: [...state.cart, { ...payload, quantity: 1 }],
       };
     case ActionType.REMOVE_FROM_CART:
-      const existingCartItem = state.cart.find((item) => item._id === action.payload._id);
+      const existingCartItem = state.cart.find((item) => item._id === payload._id);
 
       if (existingCartItem) {
         if (existingCartItem.quantity === 1) {
@@ -70,19 +72,19 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
     case ActionType.CREATE_ORDER:
       return {
         ...state,
-        orders: [...state.orders, action.payload],
+        orders: [...state.orders, payload],
         cart: [],
       };
     case ActionType.GET_ORDERS:
     case ActionType.CANCEL_ORDER:
       return {
         ...state,
-        orders: action.payload,
+        orders: payload,
       }
     case ActionType.ADD_OFFER:
       return {
         ...state,
-        offer: action.payload,
+        offer: payload,
       };
     case ActionType.REMOVE_OFFER:
       return {
@@ -92,7 +94,7 @@ export const userReducer = (state = initialState, action: UserAction): IUserStat
     case ActionType.USER_ERROR:
       return {
         ...state,
-        error: action.payload,
+        error: payload,
       };
     default:
       return state;

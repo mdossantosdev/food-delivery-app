@@ -12,36 +12,38 @@ const initialState: IShopState = {
 }
 
 export const shopReducer = (state = initialState, action: ShopAction) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case ActionType.CATEGORIES:
       return {
         ...state,
-        categories: action.payload,
+        categories: payload,
       };
     case ActionType.FOOD_SEARCH:
       return {
         ...state,
-        availableFoods: action.payload,
+        availableFoods: payload,
       };
     case ActionType.TOP_RESTAURANTS:
       return {
         ...state,
-        topRestaurants: action.payload,
+        topRestaurants: payload,
       };
     case ActionType.FOODS_30MIN:
       return {
         ...state,
-        foods30Min: action.payload,
+        foods30Min: payload,
       };
     case ActionType.OFFER_SEARCH:
       return {
         ...state,
-        offers: action.payload,
+        offers: payload,
       };
     case ActionType.SHOP_ERROR:
       return {
         ...state,
-        error: action.payload,
+        error: payload,
       };
     default:
       return state;
