@@ -1,8 +1,10 @@
 import React, { FC, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import { styles } from './styles';
+import { BackButton } from '../../components/BackButton';
 import { OfferCard } from '../../components/OfferCard';
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks';
 import { getOffers } from '../../redux/shop/actions';
@@ -11,6 +13,7 @@ import { IOffer } from '../../shared/interfaces';
 import { showAlert } from '../../utils/alert';
 
 export const Offers: FC = () => {
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
   const { offers } = useAppSelector((state) => state.shop);
   const { cart, offer, location: { postalCode } } = useAppSelector((state) => state.user);
@@ -55,6 +58,9 @@ export const Offers: FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.navigation}>
+        <View style={styles.iconContainer}>
+          <BackButton onPress={() => navigation.goBack()} />
+        </View>
         <Text style={styles.title}>Offers & Deals</Text>
       </View>
       <View style={styles.contentContainer}>

@@ -11,13 +11,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  iconContainer: {
+    position: 'absolute',
+    left: 0,
+  },
   title: {
     fontSize: 22,
     fontWeight: '700',
   },
   contentContainer: {
     flex: 11,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
