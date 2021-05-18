@@ -25,11 +25,14 @@ export const OrderDetails: FC = () => {
       'Do you want to cancel this order?',
       'Cancellation charges may apply according to the terms and conditions!',
       [
-        { text: 'No', onPress: () => {}, style: 'cancel'},
-        { text: 'Yes', onPress: () => {
-          dispatch(cancelOrder(order, user));
-          navigation.goBack();
-        }}
+        { text: 'No', style: 'cancel', onPress: () => {} },
+        { text: 'Yes',
+          style: 'destructive',
+          onPress: () => {
+            dispatch(cancelOrder(order, user));
+            setTimeout(() => navigation.goBack(), 500);
+          }
+        }
       ]
     )
   }
