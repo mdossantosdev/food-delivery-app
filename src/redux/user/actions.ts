@@ -206,7 +206,7 @@ export const cancelOrder = (order: IOrder, user: IUser): AppThunkAction => async
   try {
     axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
 
-    const response = await axios.delete<IOrder[]>(`${BASE_URL}/user/order/${order._id}`);
+    const response = await axios.patch<IOrder[]>(`${BASE_URL}/user/order/${order._id}`);
 
     if (!response) {
       dispatch({
