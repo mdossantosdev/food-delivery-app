@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 
 import { styles } from './styles';
 import { OrderNavigationProp } from './types';
@@ -13,12 +13,13 @@ import { getOrders } from '../../redux/user/actions';
 
 export const Orders: FC = () => {
   const navigation = useNavigation<OrderNavigationProp>();
+  const isFocused = useIsFocused();
   const dispatch = useAppDispatch();
   const { user, orders } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getOrders(user));
-  }, []);
+  }, [isFocused]);
 
   if (orders.length === 0) {
     return (
