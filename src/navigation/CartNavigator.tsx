@@ -13,7 +13,12 @@ const Stack = createStackNavigator<CartStackParamList>();
 
 export const CartNavigator: FC = () => {
   return (
-    <Stack.Navigator headerMode='none' initialRouteName={Routes.Cart} >
+    <Stack.Navigator
+      initialRouteName={Routes.Cart}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name={Routes.Cart} component={Cart} />
       <Stack.Screen name={Routes.Login} component={Login} />
       <Stack.Screen name={Routes.Orders} component={Orders} />

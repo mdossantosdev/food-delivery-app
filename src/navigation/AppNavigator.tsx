@@ -10,7 +10,12 @@ const Stack = createStackNavigator<AppStackParamList>();
 
 export const AppNavigator: FC = () => {
   return (
-    <Stack.Navigator headerMode='none' initialRouteName={Routes.Welcome}>
+    <Stack.Navigator
+      initialRouteName={Routes.Welcome}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name={Routes.Welcome} component={Welcome} />
       <Stack.Screen name={Routes.BottomTab} component={BottomTabNavigator} />
     </Stack.Navigator>

@@ -12,7 +12,12 @@ const Stack = createStackNavigator<HomeStackParamList>();
 
 export const HomeNavigator: FC = () => {
   return (
-    <Stack.Navigator headerMode='none' initialRouteName={Routes.Home}>
+    <Stack.Navigator
+      initialRouteName={Routes.Home}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name={Routes.Home} component={Home} />
       <Stack.Screen name={Routes.Search} component={Search} />
       <Stack.Screen name={Routes.Restaurant} component={Restaurant} />

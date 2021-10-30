@@ -11,7 +11,12 @@ const Stack = createStackNavigator<AccountStackParamList>();
 
 export const AccountNavigator: FC = () => {
   return (
-    <Stack.Navigator headerMode='none' initialRouteName={Routes.Account}>
+    <Stack.Navigator
+      initialRouteName={Routes.Account}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name={Routes.Account} component={Account}/>
       <Stack.Screen name={Routes.Orders} component={Orders} />
       <Stack.Screen name={Routes.OrderDetails} component={OrderDetails} />

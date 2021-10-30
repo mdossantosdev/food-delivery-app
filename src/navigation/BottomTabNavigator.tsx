@@ -19,9 +19,10 @@ export const BottomTabNavigator: FC = () => {
   return (
     <BottomTab.Navigator
       initialRouteName={Routes.HomeNavigator}
-      tabBarOptions={{
-        activeTintColor: 'rgb(41, 143, 163)',
-        inactiveTintColor: 'rgb(143, 143, 143)',
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: 'rgb(41, 143, 163)',
+        tabBarInactiveTintColor: 'rgb(143, 143, 143)',
       }}
     >
       <BottomTab.Screen
