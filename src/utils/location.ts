@@ -4,7 +4,7 @@ import { ILocationGeocode } from '../shared/interfaces';
 
 export const checkPermission = async () => {
   try {
-    const { status } = await Location.requestPermissionsAsync();
+    const { status } = await Location.requestForegroundPermissionsAsync();
 
     if (status !== 'granted') {
       Alert.alert(
