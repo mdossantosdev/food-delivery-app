@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from 'react-native-dotenv';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ActionType } from './actionTypes';
 import { AppThunkAction } from '../store';
 import { IUser, IFoodItem, ILocationGeocode, IOrder, IOffer } from '../../shared/interfaces';
