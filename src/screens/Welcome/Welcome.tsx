@@ -29,7 +29,7 @@ export const Welcome: FC = () => {
           dispatch(updateLocation(location[0]));
 
           setTimeout(() => {
-            navigation.navigate(Routes.BottomTab);
+            navigation.navigate(Routes.Tab);
           }, 2000)
         }
       }
