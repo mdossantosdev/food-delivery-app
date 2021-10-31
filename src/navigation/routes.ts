@@ -1,7 +1,6 @@
 export enum Routes {
   Account = 'Account',
   AccountNavigator = 'AccountNavigator',
-  BottomTab = 'BottomTab',
   Cart = 'Cart',
   CartNavigator = 'CartNavigator',
   FoodDetails = 'FoodDetails',
@@ -12,6 +11,7 @@ export enum Routes {
   OrderDetails = 'OrderDetails',
   Orders = 'Orders',
   Restaurant = 'Restaurant',
+  Tab = 'Tab',
   Search = 'Search',
   Welcome = 'Welcome',
 }

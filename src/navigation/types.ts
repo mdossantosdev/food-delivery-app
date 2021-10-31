@@ -2,7 +2,7 @@ import { IRestaurant, IFoodItem, IOrder } from '../shared/interfaces';
 
 export type AppStackParamList = {
   Welcome: undefined;
-  BottomTab: undefined;
+  Tab: undefined;
 };
 
 export type BottomTabStackParamList = {

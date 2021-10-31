@@ -11,17 +11,17 @@ import { Offers } from '../screens/Offers';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { countItems } from '../utils/cart';
 
-const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
+const Tab = createBottomTabNavigator<BottomTabStackParamList>();
 
 const TabBarIcon = (props: any) => {
   return <Icon {...props} size={26} />
 };
 
-export const BottomTabNavigator: FC = () => {
+export const TabNavigator: FC = () => {
   const { cart } = useAppSelector((state) => state.user);
 
   return (
-    <BottomTab.Navigator
+    <Tab.Navigator
       initialRouteName={Routes.HomeNavigator}
       screenOptions={{
         headerShown: false,
@@ -29,7 +29,7 @@ export const BottomTabNavigator: FC = () => {
         tabBarInactiveTintColor: 'rgb(143, 143, 143)',
       }}
     >
-      <BottomTab.Screen
+      <Tab.Screen
         name={Routes.HomeNavigator}
         component={HomeNavigator}
         options={{
@@ -39,7 +39,7 @@ export const BottomTabNavigator: FC = () => {
           )
         }}
       />
-      <BottomTab.Screen
+      <Tab.Screen
         name={Routes.Offers}
         component={Offers}
         options={{
@@ -49,7 +49,7 @@ export const BottomTabNavigator: FC = () => {
           )
         }}
       />
-      <BottomTab.Screen
+      <Tab.Screen
         name={Routes.CartNavigator}
         component={CartNavigator}
         options={{
@@ -60,7 +60,7 @@ export const BottomTabNavigator: FC = () => {
           tabBarBadge: countItems(cart)
         }}
       />
-      <BottomTab.Screen
+      <Tab.Screen
         name={Routes.AccountNavigator}
         component={AccountNavigator}
         options={{
@@ -70,6 +70,6 @@ export const BottomTabNavigator: FC = () => {
           )
         }}
       />
-    </BottomTab.Navigator>
+    </Tab.Navigator>
   );
 };
