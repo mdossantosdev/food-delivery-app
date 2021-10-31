@@ -8,6 +8,8 @@ import { HomeNavigator } from './HomeNavigator';
 import { CartNavigator } from './CartNavigator';
 import { AccountNavigator } from './AccountNavigator';
 import { Offers } from '../screens/Offers';
+import { useAppSelector } from '../hooks/reduxHooks';
+import { countItems } from '../utils/cart';
 
 const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
 
@@ -16,6 +18,8 @@ const TabBarIcon = (props: any) => {
 };
 
 export const BottomTabNavigator: FC = () => {
+  const { cart } = useAppSelector((state) => state.user);
+
   return (
     <BottomTab.Navigator
       initialRouteName={Routes.HomeNavigator}
@@ -52,7 +56,8 @@ export const BottomTabNavigator: FC = () => {
           tabBarLabel: 'Cart',
           tabBarIcon: ({ focused, color }) => (
             <TabBarIcon focused={focused} name='cart' color={color} />
-          )
+          ),
+          tabBarBadge: countItems(cart)
         }}
       />
       <BottomTab.Screen
